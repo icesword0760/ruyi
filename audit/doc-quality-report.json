@@ -1,0 +1,7 @@
+{
+  "audit_type": "doc_quality",
+  "passed": true,
+  "total_findings": 0,
+  "findings_by_rule": {},
+  "findings": []
+}

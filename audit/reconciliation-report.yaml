@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-03-16T04:39:33Z",
-  "passed": true,
+  "timestamp": "2026-03-16T04:41:25Z",
+  "passed": false,
   "summary": {
     "total_operations": 46,
     "total_obligations": 74,
@@ -1048,8 +1048,114 @@
       "user_perceivable_outcomes": [
         "返回 503 错误：RapidOCR 服务未启动"
       ]
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-001",
+      "message": "Skeleton 'CAP-001' hot_symbols not found in any surface source_hints: ['headless/websocket_recorder_handler.py:handle_event', 'headless/websocket_recorder_handler.py:_handle_click', 'headless/websocket_recorder_handler.py:_handle_input', 'headless/websocket_recorder_handler.py:_handle_scroll', 'headless/websocket_recorder_handler.py:_handle_keydown', 'headless/websocket_recorder_handler.py:_generate_selectors', 'headless/websocket_recorder_handler.py:_broadcast_step', 'headless/step_merger.py:process_step', 'headless/step_merger.py:_handle_input_merge', 'headless/step_merger.py:_handle_click_dedup', 'headless/step_merger.py:_flush_pending_input', 'server.py:api_recorder_event']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-002",
+      "message": "Skeleton 'CAP-002' hot_symbols not found in any surface source_hints: ['headless/selector_generator.py:_generate_xpath_selectors', 'headless/selector_generator.py:_generate_css_selectors', 'headless/selector_generator.py:_validate_selectors', 'headless/selector_generator.py:_check_uniqueness', 'headless/selector_generator.py:_is_meaningful_id', 'webrtc_healing/healing_locator.py:locate', 'webrtc_healing/healing_locator.py:_build_candidates', 'webrtc_healing/healing_locator.py:_try_xpath', 'webrtc_healing/healing_locator.py:_try_css', 'webrtc_healing/healing_locator.py:_try_text', 'webrtc_healing/healing_locator.py:_try_image', 'webrtc_healing/healing_locator.py:_try_ai', 'chrome_extension/element_locator.js:getRelativeXPath', 'chrome_extension/element_locator.js:getRelativeSelector', 'chrome_extension/element_locator.js:getElementInfoByCoordinates']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-003",
+      "message": "Skeleton 'CAP-003' hot_symbols not found in any surface source_hints: ['headless/stream_server.py:start', 'headless/stream_server.py:stop', 'headless/stream_server.py:broadcast_mjpeg_frame', 'headless/stream_server.py:broadcast_h264_frame', 'headless/stream_server.py:_handle_message', 'headless/stream_server.py:_handle_mode_switch', 'headless/webrtc_bridge.py:process_offer', 'headless/webrtc_bridge.py:ensure_ready', 'headless/webrtc_bridge.py:navigate', 'headless/webrtc_bridge.py:shutdown', 'headless/h264_encoder.py:start']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-004",
+      "message": "Skeleton 'CAP-004' hot_symbols not found in any surface source_hints: ['headless/cdp_client.py:connect', 'headless/cdp_client.py:close', 'headless/cdp_client.py:inject_recorder', 'headless/cdp_client.py:inject_element_locator', 'headless/cdp_client.py:take_screenshot_base64', 'headless/cdp_client.py:get_element_info_at_coordinates', 'headless/cdp_client.py:send_message_to_target', 'headless/cdp_client.py:_ensure_connected']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-005",
+      "message": "Skeleton 'CAP-005' hot_symbols not found in any surface source_hints: ['chrome_extension/dom_exporter_all_in_one.js:buildIndexFromDocument', 'chrome_extension/dom_exporter_all_in_one.js:determineNodeType', 'chrome_extension/dom_exporter_all_in_one.js:getElementViewport', 'chrome_extension/dom_exporter_all_in_one.js:isElementVisible', 'chrome_extension/dom_exporter_all_in_one.js:getElementAttributes', 'chrome_extension/dom_exporter_all_in_one.js:getElementContent']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-006",
+      "message": "Skeleton 'CAP-006' hot_symbols not found in any surface source_hints: ['webrtc_healing/step_executor.py:_do_click', 'webrtc_healing/step_executor.py:_do_input', 'webrtc_healing/step_executor.py:_do_navigate', 'webrtc_healing/step_executor.py:_do_scroll', 'webrtc_healing/step_executor.py:_do_hover', 'webrtc_healing/step_executor.py:_do_keypress', 'webrtc_healing/healing_locator.py:locate', 'webrtc_healing/healing_locator.py:_build_candidates', 'webrtc_healing/services.py:ocr_locate', 'webrtc_healing/services.py:airtest_match', 'webrtc_healing/services.py:ai_locate']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-007",
+      "message": "Skeleton 'CAP-007' hot_symbols not found in any surface source_hints: ['server.py:_start_ai_service', 'ai_service/server.js:installPuppeteerHooks', 'ai_service/server.js:connectToChrome', 'ai_service/server.js:buildModelConfig', 'ai_service/server.js:takeScreenshot', 'ai_service/server.js:callOCRForLocate', 'ai_service/ocr_service.py:ocr_extract', 'ai_service/ocr_service.py:ocr_locate']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-008",
+      "message": "Skeleton 'CAP-008' hot_symbols not found in any surface source_hints: ['controller_ui/src/modules/install.ts:installControllerModules', 'controller_ui/src/modules/videoFit.ts:installVideoFitModule', 'controller_ui/src/modules/videoFit.ts:recalc', 'controller_ui/src/modules/tabs.ts:installTabsModule', 'controller_ui/src/modules/headerPopups.ts:installHeaderPopupsModule', 'controller_ui/src/modules/headerActions.ts:installHeaderActionsModule', 'controller_ui/src/modules/floatingDock.ts:installFloatingDockModule', 'controller_ui/src/modules/logPanel.ts:installLogPanelModule', 'controller_ui/src/modules/navigationActions.ts:installNavigationActionsModule']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
+    },
+    {
+      "gap_type": "GAP-S1",
+      "entity_id": "CAP-009",
+      "message": "Skeleton 'CAP-009' hot_symbols not found in any surface source_hints: ['server.py:handle_control_event', 'headless/stream_server.py:_handle_binary_event', 'headless/scrcpy_event_handler.py:ScrcpyEventHandler', 'controller_ui/src/modules/videoFit.ts:recalc']",
+      "rule_id": "gap_s1_hot_symbol_missing",
+      "waived": false
     }
   ],
   "backlog": [],
+  "skeleton_summary": {
+    "total_skeletons": 9,
+    "cross_cutting_with_resolution": 3,
+    "cross_cutting_without_resolution": 0,
+    "gap_s1_unresolved": 9,
+    "gap_s2_count": 0,
+    "gap_s3_unresolved": 0,
+    "gap_s4_unresolved": 0,
+    "skeleton_fragmented": 0,
+    "skeleton_missing_candidate": 0
+  },
+  "skeleton_resolutions": [
+    {
+      "capability_ref": "CAP-003",
+      "resolution": "module_subsection",
+      "resolved_module_id": "M001",
+      "notes": "Media streaming managed by StreamServer/HeadlessBridge in M001"
+    },
+    {
+      "capability_ref": "CAP-009",
+      "resolution": "module_subsection",
+      "resolved_module_id": "M002",
+      "notes": "Remote control events originate from controller-ui, dispatched via server"
+    },
+    {
+      "capability_ref": "CAP-001",
+      "resolution": "module_subsection",
+      "resolved_module_id": "M001",
+      "notes": "Recording lifecycle managed by WebSocketRecorderHandler in M001"
+    },
+    {
+      "capability_ref": "CAP-006",
+      "resolution": "independent_module",
+      "resolved_module_id": "M004",
+      "notes": "Self-healing step execution is M004 (webrtc-healing)"
+    },
+    {
+      "capability_ref": "CAP-005",
+      "resolution": "non_user_visible",
+      "resolved_module_id": "M005",
+      "notes": "DOM tree export injected via CDP, no direct user surface"
+    }
+  ],
   "errors": []
 }

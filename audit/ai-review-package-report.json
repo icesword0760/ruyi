@@ -1,0 +1,93 @@
+{
+  "schema": "ai-review-package-report",
+  "version": "1.0.0",
+  "generated_at": "2026-03-15T07:12:18Z",
+  "generator": "spectwin-claim-reviewer/ai-judge",
+  "source_ledger": "review/claim-ledger.yaml",
+  "source_conflict_report": "review/conflict-report.md",
+  "summary": {
+    "total_claims": 139,
+    "already_confirmed": 139,
+    "pending_reviewed": 0,
+    "proposed_status_counts": {},
+    "conflicts_total": 5,
+    "runtime_verify_proposed": 0,
+    "requires_attention_count": 0
+  },
+  "judgments": [],
+  "conflicts": [
+    {
+      "conflict_id": "CONF-001",
+      "claim_ids": [
+        "CLM-cand-004",
+        "CLM-cand-032"
+      ],
+      "conflict_type": "inconsistent_statement",
+      "winner_claim_ids": [
+        "CLM-cand-004",
+        "CLM-cand-032"
+      ],
+      "loser_claim_ids": [],
+      "review_risk": "low"
+    },
+    {
+      "conflict_id": "CONF-002",
+      "claim_ids": [
+        "CLM-cand-006",
+        "CLM-cand-029",
+        "CLM-cand-034"
+      ],
+      "conflict_type": "inconsistent_statement",
+      "winner_claim_ids": [
+        "CLM-cand-006",
+        "CLM-cand-029",
+        "CLM-cand-034"
+      ],
+      "loser_claim_ids": [],
+      "review_risk": "low"
+    },
+    {
+      "conflict_id": "CONF-003",
+      "claim_ids": [
+        "CLM-cand-008",
+        "CLM-cand-030"
+      ],
+      "conflict_type": "inconsistent_statement",
+      "winner_claim_ids": [
+        "CLM-cand-008",
+        "CLM-cand-030"
+      ],
+      "loser_claim_ids": [],
+      "review_risk": "low"
+    },
+    {
+      "conflict_id": "CONF-004",
+      "claim_ids": [
+        "CLM-doc-042",
+        "CLM-doc-043"
+      ],
+      "conflict_type": "inconsistent_statement",
+      "winner_claim_ids": [
+        "CLM-doc-042",
+        "CLM-doc-043"
+      ],
+      "loser_claim_ids": [],
+      "review_risk": "low"
+    },
+    {
+      "conflict_id": "CONF-005",
+      "claim_ids": [
+        "CLM-cand-001",
+        "CLM-cand-002"
+      ],
+      "conflict_type": "inconsistent_statement",
+      "winner_claim_ids": [
+        "CLM-cand-001",
+        "CLM-cand-002"
+      ],
+      "loser_claim_ids": [],
+      "review_risk": "low"
+    }
+  ],
+  "runtime_backlog_count": 0
+}

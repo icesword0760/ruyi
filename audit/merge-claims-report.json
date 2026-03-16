@@ -1,0 +1,19 @@
+{
+  "audit_type": "merge_claims",
+  "timestamp": "2026-03-14T16:08:06Z",
+  "input_dir": "evidence/extracted",
+  "output_path": "review/claim-ledger.yaml",
+  "dry_run": false,
+  "files_read": [
+    "evidence/extracted/candidate-spec-claims.yaml",
+    "evidence/extracted/chat-claims.yaml",
+    "evidence/extracted/code-fact-claims.yaml",
+    "evidence/extracted/commit-claims.yaml",
+    "evidence/extracted/doc-claims.yaml",
+    "evidence/extracted/runtime-claims.yaml"
+  ],
+  "total_claims": 139,
+  "status_filled": 0,
+  "duplicates": [],
+  "passed": true
+}
