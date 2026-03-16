@@ -1,0 +1,234 @@
+/* Light + glass theme overrides (keeps legacy layout/DOM ids intact). */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(148, 163, 184, 0.38);
+  --text: rgba(15, 23, 42, 0.92);
+  --text-muted: rgba(15, 23, 42, 0.62);
+  --accent: rgba(99, 102, 241, 1);
+  --accent-soft: rgba(99, 102, 241, 0.14);
+  --danger: rgba(239, 68, 68, 1);
+  --success: rgba(22, 163, 74, 1);
+  --shadow: 0 18px 55px rgba(2, 6, 23, 0.12);
+}
+
+body {
+  background:
+    radial-gradient(1200px circle at 15% 10%, rgba(56, 189, 248, 0.18) 0%, transparent 55%),
+    radial-gradient(900px circle at 75% 0%, rgba(99, 102, 241, 0.18) 0%, transparent 55%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  color: var(--text);
+}
+
+.left-panel {
+  background: #000;
+}
+
+.video-container {
+  background: #000;
+}
+
+.right-panel {
+  background: var(--glass-bg);
+  border-left: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+}
+
+.header {
+  background: var(--glass-bg-strong);
+  color: var(--text);
+  border-bottom: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+}
+
+.header .psb-item {
+  color: var(--text-muted);
+}
+
+.header .psb-sep {
+  color: rgba(15, 23, 42, 0.35);
+}
+
+.header .psb-item.psb-conn {
+  color: rgba(22, 163, 74, 0.95);
+}
+
+.header .psb-item.psb-url {
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--glass-border);
+}
+
+.psb-url-input {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--glass-border);
+  color: var(--text);
+}
+
+.header .psb-btn {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid var(--glass-border);
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.header .psb-btn:hover {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(99, 102, 241, 0.45);
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.header .psb-btn.psb-ctrl-on {
+  background: rgba(22, 163, 74, 0.16);
+  border-color: rgba(22, 163, 74, 0.35);
+  color: rgba(21, 128, 61, 0.98);
+}
+
+.header .psb-btn.psb-ctrl-off {
+  background: rgba(255, 255, 255, 0.35);
+  color: rgba(15, 23, 42, 0.58);
+}
+
+.header .psb-btn.danger {
+  border-color: rgba(239, 68, 68, 0.45);
+  color: rgba(239, 68, 68, 0.95);
+}
+
+.header .psb-btn.danger:hover {
+  background: rgba(239, 68, 68, 0.12);
+  border-color: rgba(239, 68, 68, 0.65);
+}
+
+.header .psb-btn.active {
+  background: var(--accent-soft);
+  border-color: rgba(99, 102, 241, 0.55);
+  color: rgba(67, 56, 202, 0.98);
+}
+
+.header-tab {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
+  color: rgba(15, 23, 42, 0.72);
+}
+
+.header-tab:hover {
+  background: rgba(255, 255, 255, 0.82);
+  color: rgba(15, 23, 42, 0.92);
+  border-color: rgba(99, 102, 241, 0.45);
+}
+
+.header-tab.active {
+  background: var(--accent-soft);
+  border-color: rgba(99, 102, 241, 0.55);
+  color: rgba(67, 56, 202, 0.98);
+}
+
+.header-tab-new {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px dashed rgba(148, 163, 184, 0.75);
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.header-tab-new:hover {
+  background: rgba(255, 255, 255, 0.75);
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.settings-popup {
+  background: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+}
+
+.settings-popup-title {
+  color: rgba(15, 23, 42, 0.86);
+}
+
+.settings-popup-row label {
+  color: rgba(15, 23, 42, 0.62);
+}
+
+.settings-popup-row select {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--glass-border);
+  color: rgba(15, 23, 42, 0.85);
+}
+
+.settings-tabs {
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.settings-tab {
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.settings-tab.active {
+  color: rgba(99, 102, 241, 0.98);
+  border-bottom-color: rgba(99, 102, 241, 0.98);
+}
+
+.placeholder {
+  color: rgba(15, 23, 42, 0.58);
+}
+
+.placeholder-text {
+  color: rgba(15, 23, 42, 0.68);
+}
+
+.placeholder-sub {
+  color: rgba(15, 23, 42, 0.5);
+}
+
+/* AI panel: keep structure, lift contrast for light background */
+.ai-script-editor {
+  background: rgba(255, 255, 255, 0.48);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.ai-script-header {
+  background: rgba(255, 255, 255, 0.66);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.ai-script-header-collapse {
+  border-color: var(--glass-border);
+  color: rgba(15, 23, 42, 0.58);
+}
+
+.ai-script-header-collapse:hover {
+  background: rgba(255, 255, 255, 0.88);
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.ai-input-area {
+  background: rgba(255, 255, 255, 0.62);
+  border-top: 1px solid var(--glass-border);
+}
+
+.ai-input-wrapper {
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid var(--glass-border);
+}
+
+.ai-input {
+  color: rgba(15, 23, 42, 0.92);
+}
+
+.ai-input::placeholder {
+  color: rgba(15, 23, 42, 0.45);
+}
+
+.ai-step-card {
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid var(--glass-border);
+}
+
+.ai-step-card:hover {
+  background: rgba(255, 255, 255, 0.82);
+}
+

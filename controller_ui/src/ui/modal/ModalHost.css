@@ -1,0 +1,44 @@
+.ctl-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ctl-modal__title {
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.1px;
+  color: var(--ctl-fg);
+}
+
+.ctl-modal__msg {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--ctl-fg-2);
+}
+
+.ctl-modal__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ctl-modal__hint {
+  font-size: 11px;
+  color: var(--ctl-ink-danger);
+}
+
+.ctl-modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.ctl-dialog-content[data-variant="danger"] .ctl-modal__title::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, rgba(224, 85, 85, 0.25), transparent);
+}

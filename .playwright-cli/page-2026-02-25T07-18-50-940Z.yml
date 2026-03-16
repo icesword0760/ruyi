@@ -1,0 +1,159 @@
+- generic [ref=e2]:
+  - banner "Command Bar" [ref=e3]:
+    - generic [ref=e4]:
+      - button "连接状态" [ref=e5]:
+        - generic [ref=e7]:
+          - strong [ref=e8]: 已连接
+          - text: MJPEG · 1080p
+      - generic "关键指标" [ref=e9]:
+        - generic [ref=e10]:
+          - strong [ref=e11]: "30"
+          - text: FPS
+        - generic [ref=e12]:
+          - strong [ref=e13]: "85"
+          - text: ms 延迟
+        - generic [ref=e14]:
+          - strong [ref=e15]: "7.8"
+          - text: Mbps
+    - generic [ref=e16]:
+      - generic "当前 URL" [ref=e17]:
+        - button "https://testerhome.com/opensource_projects" [ref=e19]
+        - button "导航" [ref=e21] [cursor=pointer]:
+          - img [ref=e22]
+      - generic "Tabs" [ref=e24]:
+        - tablist "标签页" [ref=e25]:
+          - tab "测试之家" [selected] [ref=e26] [cursor=pointer]:
+            - generic [ref=e27]: 测试之家
+            - generic [ref=e28]: ×
+          - tab "登录" [ref=e29] [cursor=pointer]:
+            - generic [ref=e30]: 登录
+            - generic [ref=e31]: ×
+          - tab "新标签" [ref=e32] [cursor=pointer]:
+            - generic [ref=e33]: 新标签
+            - generic [ref=e34]: ×
+        - button "新建标签页" [ref=e35] [cursor=pointer]:
+          - img [ref=e36]
+    - generic [ref=e38]:
+      - generic "导航" [ref=e39]:
+        - button "后退" [ref=e40] [cursor=pointer]:
+          - img [ref=e41]
+        - button "前进" [ref=e43] [cursor=pointer]:
+          - img [ref=e44]
+        - button "刷新" [ref=e46] [cursor=pointer]:
+          - img [ref=e47]
+      - button "录制" [ref=e51] [cursor=pointer]: 录制
+      - button "执行" [ref=e53] [cursor=pointer]:
+        - img [ref=e54]
+        - text: 执行
+      - button "打开日志与诊断" [ref=e56] [cursor=pointer]:
+        - img [ref=e57]
+      - button "设置" [ref=e60] [cursor=pointer]:
+        - img [ref=e61]
+  - main "Stage + Dock" [ref=e64]:
+    - region "远程画面舞台" [ref=e65]:
+      - generic:
+        - generic "会话状态" [ref=e66]:
+          - generic [ref=e68]:
+            - generic [ref=e69]: Remote Session · MJPEG
+            - generic [ref=e70]: 质量 98 · 1920×1080 · 节流：开 · IME：可用
+        - generic "舞台快捷操作" [ref=e71]:
+          - button "适配屏幕" [ref=e72] [cursor=pointer]:
+            - img [ref=e73]
+          - button "100%" [ref=e75] [cursor=pointer]:
+            - img [ref=e76]
+          - button "全屏" [ref=e78] [cursor=pointer]:
+            - img [ref=e79]
+      - generic [ref=e84]:
+        - strong [ref=e85]: 远程画面
+        - generic [ref=e86]: （mock）可替换为真实流/Canvas/WebRTC
+      - generic "提示" [ref=e87]: 鼠标/键盘已接管 · Esc 退出全屏 · ⌘K 命令面板 · ⌘L 编辑 URL
+    - separator [ref=e88]
+    - complementary "工具 Dock" [ref=e89]:
+      - generic [ref=e90]:
+        - tablist "Dock 模块" [ref=e91]:
+          - tab "自动化" [selected] [ref=e92] [cursor=pointer]
+          - tab "录制" [ref=e93] [cursor=pointer]
+          - tab "脚本" [ref=e94] [cursor=pointer]
+          - tab "日志" [ref=e95] [cursor=pointer]
+          - tab "设置" [ref=e96] [cursor=pointer]
+        - button "收起 Dock（mock，不做功能）" [ref=e97] [cursor=pointer]:
+          - img [ref=e98]
+      - generic [ref=e100]:
+        - region "自动化面板" [ref=e101]:
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - heading "步骤" [level=2] [ref=e104]
+              - generic [ref=e105]: 默认“低噪声摘要”，高级项进检查器
+            - generic [ref=e106]:
+              - button "导入脚本（mock）" [ref=e107] [cursor=pointer]:
+                - img [ref=e108]
+              - button "清空（mock）" [ref=e111] [cursor=pointer]:
+                - img [ref=e112]
+          - generic [ref=e114]:
+            - list "步骤列表" [ref=e115]:
+              - listitem "步骤 1，运行中" [ref=e116]:
+                - generic [ref=e117]: "1"
+                - generic [ref=e118]:
+                  - strong [ref=e119]: 点击
+                  - generic [ref=e120]: “注册” · 优先策略：DOM 路径（可自愈）
+                - generic [ref=e121]: 运行中
+              - listitem "步骤 2，成功" [ref=e123]:
+                - generic [ref=e124]: "2"
+                - generic [ref=e125]:
+                  - strong [ref=e126]: 输入
+                  - generic [ref=e127]: 手机号/邮箱 · 自动脱敏显示
+                - generic [ref=e128]: 成功 · 42ms
+              - listitem "步骤 3，失败" [ref=e130]:
+                - generic [ref=e131]: "3"
+                - generic [ref=e132]:
+                  - strong [ref=e133]: 点击
+                  - generic [ref=e134]: “登录按钮” · 命中遮挡（可一键修复）
+                - generic [ref=e135]: 失败 · 解释
+              - listitem "步骤 4，待执行" [ref=e137]:
+                - generic [ref=e138]: "4"
+                - generic [ref=e139]:
+                  - strong [ref=e140]: 等待
+                  - generic [ref=e141]: 页面稳定 · 网络空闲 500ms
+                - generic [ref=e142]: 待执行
+            - generic [ref=e144]:
+              - generic [ref=e145]: Enter 执行 · ⌘⇧E 单步 · 拖拽排序
+              - button "打开检查器（mock）" [ref=e146] [cursor=pointer]: 检查器
+        - region "对话面板" [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - heading "自动化对话" [level=2] [ref=e150]
+              - generic [ref=e151]: 对话 = 生成/修改步骤的入口
+            - button "插入到步骤（mock）" [ref=e152] [cursor=pointer]: 插入为步骤
+          - generic [ref=e153]:
+            - status "AI 服务状态" [ref=e154]:
+              - generic [ref=e155]:
+                - strong [ref=e156]: AI：离线
+                - generic [ref=e157]: 提供“一键启动 / 重新检测 / 复制命令”，而不是纯报错
+              - button "一键启动（mock）" [ref=e158] [cursor=pointer]: 一键启动
+            - generic "对话消息" [ref=e159]:
+              - generic [ref=e160]:
+                - generic [ref=e161]:
+                  - generic [ref=e162]: 助手
+                  - generic [ref=e163]: 刚刚
+                - text: 我可以帮你把“登录”自动化成可复用脚本。你更希望：
+                - generic "快捷操作（mock）" [ref=e164]:
+                  - button "生成步骤" [ref=e165] [cursor=pointer]
+                  - button "只录制不分析" [ref=e166] [cursor=pointer]
+                  - button "打开定位器" [ref=e167] [cursor=pointer]
+              - generic [ref=e168]:
+                - generic [ref=e169]:
+                  - generic [ref=e170]: 我
+                  - generic [ref=e171]: 刚刚
+                - text: 点击登录按钮，然后输入账号密码并提交。
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - generic [ref=e174]: 助手
+                  - generic [ref=e175]: 刚刚
+                - text: 已生成 4 步。建议先执行单步验证“登录按钮”是否被遮挡（失败时可一键改用坐标/图像策略）。
+                - generic [ref=e176]:
+                  - button "单步执行" [ref=e177] [cursor=pointer]
+                  - button "应用到步骤" [ref=e178] [cursor=pointer]
+                  - button "解释失败原因" [ref=e179] [cursor=pointer]
+            - generic "输入框" [ref=e180]:
+              - textbox "描述你想做什么（Enter 发送，Shift+Enter 换行）…" [ref=e181]
+              - button "发送" [ref=e182] [cursor=pointer]

@@ -1,0 +1,22 @@
+---
+description: bgggcontent 目录与 Obsidian 操作护栏，禁止越权与破坏链接拓扑
+alwaysApply: true
+---
+
+# bgggcontent / Obsidian 操作护栏
+
+## 1. 绝对操作护栏
+
+- **严禁**使用 Linux 原生的 `mv` 或 `rm` 操作 `bgggcontent` 目录下的任何文件。
+- 涉及 Obsidian 文件的**移动、重命名、删除**，必须且只能调用 Obsidian 的 CLI 命令（`obsidian`），以保护 Obsidian 的双向链接拓扑结构。
+- 生成 Markdown 必须严格遵循 **obsidian-skills** 规范。
+
+## 2. 强制元数据注入
+
+- 在 `bgggcontent` 目录下创建任何新的 `.md` 文件，**文件最顶部必须包含标准 YAML frontmatter**。
+- 禁止生成无 frontmatter 的纯文本文件。
+
+## 3. 目录越权禁止
+
+- 活动范围**仅限于**当前工作区和软链接的 `bgggcontent`。
+- 严禁访问系统其他目录或修改以 `.` 为前缀的隐藏文件夹（如 `.git`、`.obsidian`）。

@@ -1,0 +1,31 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+pip-log.txt
+pip-delete-this-directory.txt
+.DS_Store
+*.log
+
+# Node / Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Vite build output (generated)
+static/controller-app/
+
+
+
+
+.gitnexus
+
+# spec-gen analysis artifacts
+.spec-gen/

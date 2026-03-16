@@ -1,0 +1,92 @@
+project_name: "webrtc"
+started_at: "2026-03-14T06:12:38Z"
+current_phase: 5
+phases:
+  phase_0:
+    status: completed
+    completed_at: "2026-03-14T06:40:46Z"
+    steps:
+      "0.1": {status: completed, by: "", started_at: "2026-03-14T06:31:35Z", completed_at: "2026-03-14T06:31:42Z", artifacts: [], notes: "analysis_root=.; product_surface: webrtc-server(headless/,backend,acceptance=true), controller-ui(controller_ui/,frontend,acceptance=true), ai-service(ai_service/,service,acceptance=true), webrtc-healing(webrtc_healing/,service,acceptance=true), chrome-extension(chrome_extension/,extension,acceptance=false)", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: [], required_artifacts: []}}
+      "0.2": {status: completed, by: "", started_at: "2026-03-14T06:35:06Z", completed_at: "2026-03-14T06:35:06Z", artifacts: [.spec-pipeline-status.yaml], notes: "baseline_ref=db9f3af465b51ad6c74204675d2465e294dbb9e1; has_commits=true; init.sh completed successfully", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: [], required_artifacts: []}}
+      "0.3": {status: completed, by: "", started_at: "2026-03-14T06:40:46Z", completed_at: "2026-03-14T06:40:46Z", artifacts: [canonical/scope.yaml], notes: "governance_stage=report_only; scope.yaml finalized with 5 product_surface entries (4 acceptance=true, 1 acceptance=false)", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["0.1", "0.2"], required_artifacts: ["canonical/scope.yaml"]}}
+  phase_1:
+    status: completed
+    completed_at: "2026-03-15T07:38:37Z"
+    steps:
+      "1.1": {status: completed, by: "", started_at: "2026-03-15T07:38:06Z", completed_at: "2026-03-15T07:38:06Z", artifacts: [evidence/code-facts/spec-gen/], notes: "W5 execution: spec-gen analyze completed, products in evidence/code-facts/spec-gen/", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/code-facts/spec-gen/"]}}
+      "1.2": {status: completed, by: "", started_at: "2026-03-15T07:38:06Z", completed_at: "2026-03-15T07:38:06Z", artifacts: [evidence/code-facts/gitnexus/], notes: "W5 execution: GitNexus indexed 11341 nodes, exported symbols/processes/clusters", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/code-facts/gitnexus/"]}}
+      "1.3": {status: completed, by: "", started_at: "2026-03-15T07:38:31Z", completed_at: "2026-03-15T07:38:37Z", artifacts: [evidence/code-facts/ast-index/], notes: "W5 degraded: ast-index not generated, claim extraction proceeded without it", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["1.1"], required_artifacts: ["evidence/code-facts/ast-index/"]}}
+      "1.4": {status: completed, by: "", started_at: "2026-03-15T07:38:37Z", completed_at: "2026-03-15T07:38:37Z", artifacts: [evidence/code-facts/api-inventory/], notes: "W5 degraded: api-inventory not generated, claim extraction proceeded without it", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/code-facts/api-inventory/"]}}
+      "1.5": {status: completed, by: "", started_at: "2026-03-15T07:38:37Z", completed_at: "2026-03-15T07:38:37Z", artifacts: [evidence/runtime-observations/], notes: "W5 skipped: no runtime observation data available for webrtc", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: true, depends_on: ["1.1", "1.2", "1.3", "1.4"], required_artifacts: ["evidence/runtime-observations/"]}}
+  phase_2:
+    status: completed
+    completed_at: "2026-03-15T07:38:53Z"
+    steps:
+      "2.1": {status: completed, by: "", started_at: "2026-03-15T07:38:46Z", completed_at: "2026-03-15T07:38:47Z", artifacts: [evidence/extracted/code-fact-claims.yaml], notes: "W6: 45 code-fact claims extracted", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/extracted/code-fact-claims.yaml"]}}
+      "2.2": {status: completed, by: "", started_at: "2026-03-15T07:38:46Z", completed_at: "2026-03-15T07:38:47Z", artifacts: [evidence/extracted/doc-claims.yaml], notes: "W6: 60 doc claims extracted from 233 raw-docs", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/extracted/doc-claims.yaml"]}}
+      "2.3": {status: completed, by: "", started_at: "2026-03-15T07:38:46Z", completed_at: "2026-03-15T07:38:47Z", artifacts: [evidence/extracted/commit-claims.yaml], notes: "W6: skip — only 1 administrative commit, 0 claims", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/extracted/commit-claims.yaml"]}}
+      "2.4": {status: completed, by: "", started_at: "2026-03-15T07:38:46Z", completed_at: "2026-03-15T07:38:53Z", artifacts: [evidence/extracted/chat-claims.yaml], notes: "W6: skip — no substantive chat files, 0 claims", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: [], required_artifacts: ["evidence/extracted/chat-claims.yaml"]}}
+      "2.5": {status: completed, by: "", started_at: "2026-03-15T07:38:46Z", completed_at: "2026-03-15T07:38:53Z", artifacts: [evidence/extracted/runtime-claims.yaml], notes: "W6: skip — runtime-observations not available, 0 claims", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/extracted/runtime-claims.yaml"]}}
+      "2.6": {status: completed, by: "", started_at: "2026-03-15T07:38:46Z", completed_at: "2026-03-15T07:38:53Z", artifacts: [evidence/extracted/candidate-spec-claims.yaml], notes: "W6: 34 candidate-spec claims from 3 spec files", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["evidence/extracted/candidate-spec-claims.yaml"]}}
+  phase_3:
+    status: completed
+    completed_at: "2026-03-15T07:39:24Z"
+    steps:
+      "3.1": {status: completed, by: "", started_at: "2026-03-15T07:39:00Z", completed_at: "2026-03-15T07:39:00Z", artifacts: [review/claim-ledger.yaml], notes: "W7: merge-claims.sh merged 139 claims into claim-ledger", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["review/claim-ledger.yaml"]}}
+      "3.2": {status: completed, by: "", started_at: "2026-03-15T07:39:00Z", completed_at: "2026-03-15T07:39:01Z", artifacts: [review/claim-ledger.yaml, review/conflict-report.md], notes: "W7: auto-review completed — 45 confirmed_current, 94 pending_review, 5 conflicts", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["3.1"], required_artifacts: ["review/claim-ledger.yaml", "review/conflict-report.md"]}}
+      "3.3": {status: completed, by: "", started_at: "2026-03-15T07:39:23Z", completed_at: "2026-03-15T07:39:24Z", artifacts: [review/claim-ledger.yaml, review/decision-log.yaml, review/runtime-verify-backlog.yaml], notes: "W7+W8: judgment package reviewed and applied — 87 confirmed_intended, 45 confirmed_current, 4 obsolete, 3 runtime_verify; 5 conflicts resolved (DEC-001~005); 3 backlog items with next_hop", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["3.2"], required_artifacts: ["review/claim-ledger.yaml", "review/decision-log.yaml", "review/runtime-verify-backlog.yaml"]}}
+  phase_4:
+    status: completed
+    completed_at: "2026-03-15T08:10:18Z"
+    steps:
+      "4.1": {status: completed, by: "", started_at: "2026-03-15T07:44:01Z", completed_at: "2026-03-15T07:44:01Z", artifacts: [canonical/glossary.yaml], notes: "W8: glossary built with 25 terms from 139 claims, covering all 5 modules (M001-M005), schema validation passed", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["canonical/glossary.yaml"]}}
+      "4.2": {status: completed, by: "", started_at: "2026-03-15T07:44:53Z", completed_at: "2026-03-15T07:44:53Z", artifacts: [canonical/module-catalog.yaml], notes: "W8: 5 modules built (M001-M005); complexity: 3 critical + 1 high + 1 medium; all implemented confidence; cross-module deps mapped; schema validation passed", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["4.1"], required_artifacts: ["canonical/module-catalog.yaml"]}}
+      "4.3": {status: completed, by: "", started_at: "2026-03-15T07:49:57Z", completed_at: "2026-03-15T07:49:57Z", artifacts: [canonical/constraint-matrix/], notes: "W8: 5 modules x 39 constraints total (M001:10, M002:10, M003:7, M004:3, M005:9); 100 branches, 91 promoted; schema validation 5/5 passed", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["4.2"], required_artifacts: ["canonical/constraint-matrix/"]}}
+      "4.4": {status: completed, by: "", started_at: "2026-03-15T07:59:51Z", completed_at: "2026-03-15T07:59:51Z", artifacts: [canonical/scenario-catalog.yaml], notes: "W8: 50 scenarios (P0:16, P1:26, P2:8); automation: deterministic:30, agent_assisted:16, manual_only:4; 89 promoted branches covered; schema validation passed", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["4.3"], required_artifacts: ["canonical/scenario-catalog.yaml"]}}
+      "4.5": {status: completed, by: "", started_at: "2026-03-15T08:03:23Z", completed_at: "2026-03-15T08:03:23Z", artifacts: [canonical/observable-contracts.yaml], notes: "W8: 55 observable contracts covering all 50 scenarios (M001:14, M002:17, M003:8, M004:6, M005:10); schema validation passed", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["4.4"], required_artifacts: ["canonical/observable-contracts.yaml"]}}
+      "4.6": {status: completed, by: "", started_at: "2026-03-15T08:05:08Z", completed_at: "2026-03-15T08:05:08Z", artifacts: [canonical/locator-manifest.yaml], notes: "W8: 102 locators (M001:22, M002:30, M003:12, M004:16, M005:22); stability: 80 stable + 17 dynamic + 5 fragile; all dynamic/fragile have fallbacks; schema validation passed", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["4.4"], required_artifacts: ["canonical/locator-manifest.yaml"]}}
+      "4.7": {status: completed, by: "", started_at: "2026-03-15T07:53:25Z", completed_at: "2026-03-15T07:53:25Z", artifacts: [canonical/state-models/], notes: "W8: 4 state models built (M001:6 states/10 transitions, M002:6/13, M003:7/9, M005:6/10); M004 skipped (medium complexity); schema validation 4/4 passed; no deadlocks", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["4.3"], required_artifacts: ["canonical/state-models/"]}}
+      "4.8": {status: completed, by: "", started_at: "2026-03-15T08:08:53Z", completed_at: "2026-03-15T08:08:53Z", artifacts: [canonical/test-environment.yaml, canonical/test-data.yaml, canonical/cleanup-contracts.yaml], notes: "W8: 5 environments + 18 datasets + 10 cleanup procedures; all 3 files pass schema validation", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["4.5", "4.6", "4.7"], required_artifacts: ["canonical/test-environment.yaml", "canonical/test-data.yaml", "canonical/cleanup-contracts.yaml"]}}
+      "4.9": {status: completed, by: "", started_at: "2026-03-15T08:10:18Z", completed_at: "2026-03-15T08:10:18Z", artifacts: [], notes: "Phase 4 integrity validation (proposal Step 4.✓)\nW8 Phase 4 validation: validate.sh 18/18 passed, check-refs.sh 0 errors 0 warnings; locator ID alignment + summary mismatch fixed", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["4.8"], required_artifacts: []}}
+  phase_5:
+    status: pending
+    completed_at: ""
+    steps:
+      "5.1": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["docs/PRD_BDD.md"]}}
+      "5.2": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["docs/FLOW_STATE_MACHINE.md"]}}
+      "5.3": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["docs/TEST_CASES.md"]}}
+      "5.4": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["docs/ACCEPTANCE_CHECKLIST.md"]}}
+      "5.5": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "Phase 5 consistency validation (proposal Step 5.✓)", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["5.1", "5.2", "5.3", "5.4"], required_artifacts: ["audit/doc-consistency-report.json"]}}
+  phase_6:
+    status: pending
+    completed_at: ""
+    steps:
+      "6.1": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["execution/e2e-scenario-manifest.yaml"]}}
+      "6.2": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["6.1"], required_artifacts: ["execution/playwright-manifest.yaml"]}}
+      "6.3": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["6.1"], required_artifacts: ["execution/browser-agent-manifest.yaml"]}}
+      "6.4": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "Phase 6 schema validation (proposal Step 6.✓)", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["6.2", "6.3"], required_artifacts: []}}
+  phase_7:
+    status: pending
+    completed_at: ""
+    steps:
+      "7.1": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["execution/evidence/env-setup-report.json"]}}
+      "7.2": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["7.1"], required_artifacts: ["execution/evidence/acceptance-run.json"]}}
+      "7.3": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["7.1"], required_artifacts: ["execution/evidence/acceptance-run.json"]}}
+      "7.4": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["7.2", "7.3"], required_artifacts: ["docs/ACCEPTANCE_CHECKLIST.md"]}}
+      "7.5": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["7.4"], required_artifacts: ["execution/evidence/acceptance-summary.md"]}}
+  phase_8:
+    status: pending
+    completed_at: ""
+    steps:
+      "8.1": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["audit/entry-coverage-report.json"]}}
+      "8.2": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["audit/shared-validator-coverage-report.json"]}}
+      "8.3": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["audit/hub-coverage-report.json"]}}
+      "8.4": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["audit/scenario-trace-report.json"]}}
+      "8.5": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["8.1", "8.2", "8.3", "8.4"], required_artifacts: ["audit/cross-check-report.md"]}}
+  phase_9:
+    status: pending
+    completed_at: ""
+    steps:
+      "9.1": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: [], required_artifacts: ["audit/drift-check-report.json"]}}
+      "9.2": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: false, allow_skip: false, depends_on: ["9.1"], required_artifacts: []}}
+      "9.3": {status: pending, by: "", started_at: "", completed_at: "", artifacts: [], notes: "", waiver_refs: [], controls: {requires_manual_confirmation: true, allow_skip: false, depends_on: ["9.2"], required_artifacts: []}}

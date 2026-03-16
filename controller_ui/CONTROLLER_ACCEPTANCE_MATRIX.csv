@@ -1,0 +1,75 @@
+scenario_id,module,title,precondition,steps,expected
+SHELL-001,Shell,页面可加载并初始化成功,服务已启动并可访问 /controller,打开 /controller,"显示加载覆盖层→初始化完成后自动消失；无致命错误；关键模块可用（设置/AI/日志等入口可见或可达）"
+SHELL-002,Shell,减少动态偏好可用,系统设置 prefers-reduced-motion=reduce,打开 /controller,"动画被减少（无大幅位移/缩放）；交互仍可用；过渡以 opacity/即时为主"
+SHELL-003,Shell,键盘可达（基本）,无,用 Tab 在顶栏/侧栏切换焦点,"焦点可见；Popover/Dialog 打开后焦点正确落入；Esc 可关闭并回到触发点"
+
+STATE-001,Status,断开态提示清晰,未连接（或刚断开）,观察顶栏状态区与画面占位,"显示“未连接/断开”状态与下一步建议（连接/检查服务/查看日志）；画面占位清晰"
+STATE-002,Status,连接中反馈,未连接,触发连接（任一传输）,"状态变为 Connecting；按钮进入 loading/禁用；日志/Toast 给出开始连接提示"
+STATE-003,Status,连接成功反馈,后端可正常连接,完成连接,"状态变为 Connected；FPS/带宽开始刷新；画面显示；Dock/HUD 行为正常"
+STATE-004,Status,降级态反馈,触发降级（例如 scrcpy 失败回退）,执行导致降级的操作,"状态显示 Degraded；给出原因与建议（可切换模式/查看日志）"
+STATE-005,Status,错误态可恢复,制造错误（断网/后端异常）,触发失败操作,"显示 Error；提供重试入口；不进入不可恢复死状态"
+
+NAV-001,Navigation,URL 点击进入编辑,已连接且 URL 可见,点击 URL 显示区→输入→Enter,"进入编辑态；Enter 提交后发起 navigate；成功后 URL 更新并刷新状态"
+NAV-002,Navigation,URL 编辑 Esc 取消,任意,点击 URL→输入→Esc,"取消编辑并恢复原 URL；不发起 navigate"
+NAV-003,Navigation,URL 编辑 Blur 取消,任意,点击 URL→输入→点击空白,"取消编辑并恢复原 URL（与 Esc 等价）"
+NAV-004,Navigation,URL 自动补全协议,任意,输入 example.com→Enter,"请求使用 https://example.com（或规则定义的补全策略）；UI 显示补全后的值"
+NAV-005,Navigation,后退/前进,已连接且有历史,点击 Back/Forward,"调用 /api/session/back|forward；成功后 URL 更新；失败有提示"
+NAV-006,Navigation,刷新,已连接,点击 Reload,"调用 /api/session/reload；状态刷新；失败有提示"
+
+TAB-001,Tabs,Tab 列表可见/隐藏,已连接,打开页面后等待 tabs 拉取,"tabs>0 时显示 Tabs 区；tabs=0 时隐藏；无抖动"
+TAB-002,Tabs,新建 Tab,已连接,点击 New Tab,"调用 /api/tabs/create；tabs 刷新；可切换到新 tab"
+TAB-003,Tabs,切换 Tab,已连接且 tabs>=2,点击某 tab,"调用 /api/tabs/switch；active 标记更新；状态刷新"
+TAB-004,Tabs,关闭 Tab,已连接且 tabs>=2,点击关闭按钮,"调用 /api/tabs/close；tabs 刷新；不能关闭最后一个 tab（有提示）"
+TAB-005,Tabs,新 Tab 自动切换,后端会推送 new tab 消息,触发新 tab 事件,"UI 反映新 tab；若策略为自动切换则自动切换并提示"
+
+SET-001,Settings,设置弹窗打开/关闭,任意,点击设置按钮→点击外部,"弹窗显示/隐藏；点击外部关闭；不影响其他弹窗"
+SET-002,Settings,设置 Tab 切换（画质/AI）,弹窗已打开,点击“画质设置/AI 设置”,"内容区切换；active 样式正确；焦点管理合理"
+SET-003,Settings,应用画质设置,已连接,修改 fps/quality/resolution→点击应用,"调用 /api/session/settings（或同等）并提示；成功后刷新状态；失败有原因"
+SET-004,Settings,切换传输模式,已连接,选择 transport→点击切换模式,"断开当前连接→连接新模式；日志完整；失败可恢复"
+SET-005,Settings,AI 模型选择持久化,任意,切换 AI 模型→刷新页面,"localStorage 生效；刷新后保持选择；AI 使用新模型"
+SET-006,Settings,分离模式开关与规划模型,任意,打开分离模式→选择规划模型,"分离模式状态持久化；规划模型选择持久化；AI 逻辑使用"
+
+IME-001,IME,IME 弹窗打开/关闭,任意,点击“输入”→点击外部,"弹窗显示/隐藏；点击外部关闭；不影响设置弹窗"
+IME-002,IME,IME 字符计数,IME 弹窗打开,输入内容,"字符计数实时更新"
+IME-003,IME,IME 发送,已连接且可输入,输入中文→发送,"发送文本到远端（按现有逻辑）；成功/失败提示；弹窗行为符合规格"
+IME-004,IME,IME 清空,IME 弹窗打开,点击清空,"输入框清空；计数归零"
+
+CTRL-001,RemoteControl,控制开关,已连接,点击“控制”,"控制启用/禁用切换；按钮样式变化；状态文案变化"
+CTRL-002,RemoteControl,鼠标点击,控制启用且画面可见,在画面点击,"发送控制事件；远端产生对应点击效果（E2E 可通过后端事件计数或 mock 断言）"
+CTRL-003,RemoteControl,滚轮/拖拽,控制启用,滚轮/拖动,"发送对应事件；无卡死；节流/批量策略生效"
+CTRL-004,RemoteControl,键盘输入,控制启用,在画面聚焦后按键,"发送键盘事件；常见键（Enter/Esc/Backspace）正确"
+
+FULL-001,Fullscreen,全屏切换,任意,点击全屏按钮,"进入/退出全屏；UI 有提示；异常可恢复"
+
+CONN-001,Transport,WebRTC 连接成功,后端 WebRTC 可用,选择 WebRTC→连接,"画面显示 remoteVideo；状态 Connected；日志显示 ICE/SDP 关键节点"
+CONN-002,Transport,MJPEG 连接成功,后端 WS 5567 可用,选择 MJPEG→连接,"画面显示 remoteImage；FPS/带宽更新；首帧提示与统计更新"
+CONN-003,Transport,Scrcpy(H.264) 连接成功,后端 H.264 可用,选择 Scrcpy→连接,"画面显示 H.264 播放元素；播放器类型正确；失败可降级"
+CONN-004,Transport,断开连接清理,已连接,点击断开,"所有连接资源清理；画面回到占位；轮询停止；状态为未连接"
+CONN-005,Transport,释放实例,任意,点击释放→确认,"执行 reset；清理播放器与连接；状态刷新；失败有提示"
+
+LOG-001,Logs,日志可见且可滚动,有日志输出,打开日志面板,"日志按时间追加；可滚动；不影响主交互"
+LOG-002,Logs,日志筛选,日志面板打开,切换筛选（info/warn/error/debug）,"仅显示对应类型；性能稳定"
+LOG-003,Logs,日志搜索,日志面板打开,输入搜索词,"高亮或过滤命中；无明显卡顿"
+LOG-004,Logs,日志导出,日志面板打开,点击导出,"生成导出文件或复制到剪贴板（按实现）；提示成功/失败"
+LOG-005,Logs,调试日志,产生 debug 输出,打开 debug 视图,"debug 日志可见；与普通日志区分明确"
+
+AI-001,AI,发送消息生成步骤,已连接且 AI 服务可用,输入消息→发送,"进入生成态；可停止；生成完成后显示回复与步骤块"
+AI-002,AI,停止生成,生成中,点击停止,"停止请求生效；UI 退出生成态；提示停止"
+AI-003,AI,将单步加入脚本,AI 回复包含步骤,点击“加入此步”,"脚本区增加步骤；步骤排序正确；对话区按规则折叠/保持"
+AI-004,AI,全部加入脚本,AI 回复包含多步,点击“全部加入”,"脚本区批量增加；顺序一致；提示成功"
+AI-005,AI,脚本步骤拖拽排序,脚本区有多步,拖拽改变顺序,"顺序更新；插入点显示；拖拽手感与反馈符合规格"
+AI-006,AI,单步执行,脚本区有步骤且可执行,点击某步“执行”,"调用 /api/ai/execute-step；步骤状态 pending→executing→success|error；失败有原因"
+AI-007,AI,全部执行,脚本区有多步,点击“全部执行”,"按序执行；进度可见；任一步失败时策略与提示符合规格"
+AI-008,AI,步骤编辑器打开/保存,脚本区有步骤,打开编辑器→修改→保存,"字段校验；保存后步骤更新；编辑器关闭并回到原焦点"
+AI-009,AI,定位器管理（启用/禁用/排序）,编辑器打开,切换 locator tab→禁用/启用→拖拽排序,"locator 状态与优先级保存；预览区更新；行为可复现"
+AI-010,AI,OCR 重试,步骤含截图模板,点击 OCR 重试,"进入 pending；完成后 textContent locator 更新；失败不影响其他 locator"
+
+SCRIPT-001,Scripts,保存脚本,脚本区有步骤,点击保存→填写名称,"调用 /api/ai/scripts 保存；列表刷新；提示成功"
+SCRIPT-002,Scripts,加载脚本,存在已保存脚本,从脚本库选择脚本,"加载并替换当前步骤；提示成功；失败可恢复"
+SCRIPT-003,Scripts,重命名脚本,存在脚本,重命名操作,"后端更新；列表刷新；提示成功/失败"
+SCRIPT-004,Scripts,删除脚本,存在脚本,删除→确认,"后端删除；列表刷新；提示成功/失败"
+SCRIPT-005,Scripts,导出脚本,存在脚本,点击导出,"触发下载/复制；文件内容符合当前脚本"
+
+REC-001,Recorder,录制开始/停止,已连接且 recorder 服务可用,点击录制→操作→停止,"开始时 UI 明确录制态；步骤实时进入脚本；停止后提示与统计正确"
+REC-002,Recorder,录制步骤 enrichment,录制产生步骤且可抓帧/OCR 可用,等待 enrichment 完成,"步骤 locators 被增强；UI 更新；失败不阻断主流程"
+

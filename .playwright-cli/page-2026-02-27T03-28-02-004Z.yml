@@ -1,0 +1,138 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "已连接 (MJPEG)" [ref=e109]: 已连接
+        - generic [ref=e11]:
+          - button "后退" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+          - button "前进" [ref=e15] [cursor=pointer]:
+            - img [ref=e16]
+          - button "刷新" [ref=e18] [cursor=pointer]:
+            - img [ref=e19]
+      - generic [ref=e24]:
+        - generic "https://testerhome.com/" [ref=e112] [cursor=pointer]
+        - generic [ref=e113]:
+          - generic "https://testerhome.com/" [ref=e190] [cursor=pointer]:
+            - generic [ref=e191]: 测试之家
+          - button "新建标签页" [ref=e117] [cursor=pointer]:
+            - img [ref=e118]
+      - generic [ref=e27]:
+        - button "中文输入辅助" [ref=e29] [cursor=pointer]:
+          - img [ref=e30]
+        - button "收起工具栏" [ref=e33] [cursor=pointer]:
+          - img [ref=e34]
+        - button "设置" [ref=e37] [cursor=pointer]:
+          - img [ref=e38]
+        - button "打开日志面板" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+        - button "全屏" [ref=e45] [cursor=pointer]:
+          - img [ref=e46]
+        - button "更多" [ref=e52] [cursor=pointer]:
+          - img [ref=e53]
+    - button "展开工具栏":
+      - img
+    - generic [ref=e57]:
+      - img [ref=e111]
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e71]:
+            - button "保存脚本" [ref=e192] [cursor=pointer]:
+              - img [ref=e193]
+            - button "删除（请先选中步骤）" [disabled]:
+              - img
+            - generic [ref=e72]:
+              - button "已保存的脚本" [ref=e73] [cursor=pointer]:
+                - img [ref=e74]
+              - dialog "已保存脚本" [ref=e123]:
+                - generic [ref=e124]:
+                  - generic [ref=e125] [cursor=pointer]:
+                    - generic [ref=e126]:
+                      - generic [ref=e127]: AI脚本_2026/2/24 13:47:50
+                      - generic [ref=e128]: 4 步 · 02/24 13:47
+                    - generic [ref=e129]:
+                      - button "导出" [ref=e130]:
+                        - img [ref=e131]
+                      - button "删除" [ref=e134]:
+                        - img [ref=e135]
+                  - generic [ref=e138] [cursor=pointer]:
+                    - generic [ref=e139]:
+                      - generic [ref=e140]: AI脚本_2026/2/24 13:15:51
+                      - generic [ref=e141]: 5 步 · 02/24 13:15
+                    - generic [ref=e142]:
+                      - button "导出" [ref=e143]:
+                        - img [ref=e144]
+                      - button "删除" [ref=e147]:
+                        - img [ref=e148]
+                  - generic [ref=e151] [cursor=pointer]:
+                    - generic [ref=e152]:
+                      - generic [ref=e153]: AI脚本_2026/2/20 20:16:06
+                      - generic [ref=e154]: 10 步 · 02/20 20:16
+                    - generic [ref=e155]:
+                      - button "导出" [ref=e156]:
+                        - img [ref=e157]
+                      - button "删除" [ref=e160]:
+                        - img [ref=e161]
+                  - generic [ref=e164] [cursor=pointer]:
+                    - generic [ref=e165]:
+                      - generic [ref=e166]: AI脚本_2026/2/20 15:40:12
+                      - generic [ref=e167]: 4 步 · 02/20 15:40
+                    - generic [ref=e168]:
+                      - button "导出" [ref=e169]:
+                        - img [ref=e170]
+                      - button "删除" [ref=e173]:
+                        - img [ref=e174]
+                  - generic [ref=e177] [cursor=pointer]:
+                    - generic [ref=e178]:
+                      - generic [ref=e179]: AI脚本_2026/2/11 14:15:15
+                      - generic [ref=e180]: 1 步 · 02/11 14:15
+                    - generic [ref=e181]:
+                      - button "导出" [ref=e182]:
+                        - img [ref=e183]
+                      - button "删除" [ref=e186]:
+                        - img [ref=e187]
+            - button "分离面板" [ref=e76] [cursor=pointer]:
+              - img [ref=e77]
+          - generic [ref=e82]:
+            - generic [ref=e197]:
+              - generic "点击执行此步骤" [ref=e198] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e200] [cursor=pointer]: "'Wiki'"
+              - generic "选中/取消选中"
+              - generic [ref=e201]:
+                - button "更多操作":
+                  - img
+            - generic [ref=e202]:
+              - generic "点击执行此步骤" [ref=e203] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e205] [cursor=pointer]: "'活动'"
+              - generic "选中/取消选中"
+              - generic [ref=e206]:
+                - button "更多操作":
+                  - img
+            - generic [ref=e207]:
+              - generic "点击执行此步骤" [ref=e208] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e210] [cursor=pointer]: "'开源项目'"
+              - generic "选中/取消选中"
+              - generic [ref=e211]:
+                - button "更多操作":
+                  - img
+            - generic [ref=e212]:
+              - generic "点击执行此步骤" [ref=e213] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e215] [cursor=pointer]: "'社区学堂新'"
+              - generic "选中/取消选中"
+              - generic [ref=e216]:
+                - button "更多操作":
+                  - img
+        - generic [ref=e93]:
+          - textbox "输入指令，回车发送" [ref=e97]
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - button "录制" [ref=e100] [cursor=pointer]:
+                - img [ref=e101]
+                - text: 录制
+              - button "执行" [ref=e217] [cursor=pointer]:
+                - img [ref=e218]
+                - text: 执行
+            - button "发送" [ref=e105] [cursor=pointer]:
+              - img [ref=e106]
+  - region "Notifications (F8)":
+    - list

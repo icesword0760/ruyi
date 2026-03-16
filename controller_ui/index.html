@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light" />
+    <title>控制端 - WebRTC 远程控制</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Legacy-compatible globals so E2E parity tests can stub and inspect state.
+      // These are intentionally `var` (global bindings) to match the legacy controller.html scripts.
+      var pc = null;
+      var dataChannel = null;
+      var remoteControl = null;
+      var controlEnabled = false;
+
+      var mjpegSocket = null;
+      var currentTransportMode = "webrtc";
+      var currentEncodingMode = "mjpeg";
+      var isConnected = false;
+
+      // Binary control events (optional).
+      var binaryEventEncoder = null;
+      var USE_BINARY_EVENTS = true;
+
+      // Tabs.
+      var currentTabs = [];
+      var activeTabId = null;
+
+      // Player.
+      var streamPlayerManager = null;
+      var streamStats = null;
+
+      // Timers (populated by app init).
+      var statusTimer = null;
+      var transportModePollingInterval = null;
+      var tabsPollingInterval = null;
+      var bandwidthPollingInterval = null;
+      var captureModeTimer = null;
+
+      // Logging (legacy keeps these in-memory).
+      var autoScroll = true;
+      var logEntries = [];
+
+      // Frame counters.
+      var mjpegFrameCount = 0;
+      var mjpegLastFrameTime = 0;
+      var h264FrameCount = 0;
+      var h264LastFrameTime = 0;
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

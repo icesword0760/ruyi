@@ -1,0 +1,82 @@
+/**
+ * WebRTC Screen Recorder - 悬浮按钮样式
+ */
+
+.webrtc-recorder-btn {
+  position: fixed !important;
+  top: 20px !important;
+  right: 20px !important;
+  z-index: 2147483647 !important;
+  
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  
+  padding: 12px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  
+  cursor: pointer;
+  user-select: none;
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  
+  transition: all 0.3s ease;
+}
+
+.webrtc-recorder-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+}
+
+.webrtc-recorder-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.webrtc-recorder-btn.recording {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  animation: recording-pulse 2s ease-in-out infinite;
+}
+
+.webrtc-recorder-btn.recording:hover {
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.6);
+}
+
+@keyframes recording-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.8);
+  }
+}
+
+.recorder-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.recorder-text {
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* 防止与页面元素冲突 */
+.webrtc-recorder-btn * {
+  all: unset;
+  display: inline;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+}
+
+.webrtc-recorder-btn .recorder-icon,
+.webrtc-recorder-btn .recorder-text {
+  display: inline-block;
+}

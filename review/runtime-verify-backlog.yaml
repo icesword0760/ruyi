@@ -1,0 +1,33 @@
+backlog:
+- claim_id: CLM-cand-004
+  statement: 'spec-gen identified only one domain: chrome-extension, which handles
+    DOM export with XPath annotations'
+  source_type: candidate_spec
+  source_ref: specs/overview/spec.md:Domains
+  reason: Low confidence candidate_spec inference; no code_fact corroboration found.
+    Runtime verification would confirm but is unavailable.
+  next_hop: retain_unverified
+  added_at: '2026-03-15T07:03:15Z'
+  resolved_at: ''
+  resolution: ''
+- claim_id: CLM-cand-007
+  statement: 'DOMExporterService depends on three internal services: ElementIndexingService,
+    XPathGenerationService, and IframeTraversalService'
+  source_type: candidate_spec
+  source_ref: specs/chrome-extension/spec.md:Technical Notes
+  reason: Low confidence candidate_spec inference; no code_fact corroboration found.
+    Runtime verification would confirm but is unavailable.
+  next_hop: retain_unverified
+  added_at: '2026-03-15T07:03:15Z'
+  resolved_at: ''
+  resolution: ''
+- claim_id: CLM-cand-003
+  statement: The system follows a layered architecture style
+  source_type: candidate_spec
+  source_ref: specs/overview/spec.md:Technical Notes
+  reason: Low confidence candidate_spec inference; no code_fact corroboration found.
+    Runtime verification would confirm but is unavailable.
+  next_hop: retain_unverified
+  added_at: '2026-03-15T07:03:15Z'
+  resolved_at: ''
+  resolution: ''

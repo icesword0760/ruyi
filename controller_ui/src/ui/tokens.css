@@ -1,0 +1,112 @@
+:root {
+  color-scheme: light;
+
+  /* ── Typography ── */
+  --ctl-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --ctl-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  /* ── Text Colors (3-level hierarchy) ── */
+  --ctl-fg: #0f172a;
+  --ctl-fg-2: #475569;
+  --ctl-fg-3: #94a3b8;
+
+  /* ── Surface Elevation (4-level, light to white) ── */
+  --ctl-surface-0: #f8fafc;
+  --ctl-surface-1: rgba(255, 255, 255, 0.88);
+  --ctl-surface-2: rgba(255, 255, 255, 0.95);
+  --ctl-surface-3: #ffffff;
+
+  /* ── Shadow Elevation (4-level, standard single-direction) ── */
+  --ctl-shadow-e1:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 1px 1px rgba(0, 0, 0, 0.02);
+  --ctl-shadow-e2:
+    0 2px 6px rgba(0, 0, 0, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.04);
+  --ctl-shadow-e3:
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 2px 4px rgba(0, 0, 0, 0.04);
+  --ctl-shadow-e4:
+    0 12px 40px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* ── Inset Shadows (for inputs, wells) ── */
+  --ctl-shadow-inset: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+  --ctl-shadow-inset-sm: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+  --ctl-shadow-pressed: inset 0 2px 4px rgba(0, 0, 0, 0.08);
+
+  /* ── Borders (3-level) ── */
+  --ctl-border: rgba(226, 232, 240, 0.8);
+  --ctl-border-2: rgba(203, 213, 225, 0.6);
+  --ctl-border-3: rgba(148, 163, 184, 0.4);
+
+  /* ── Brand / Accent ── */
+  --ctl-accent: #5b7ff6;
+  --ctl-accent-hover: #7c9afc;
+  --ctl-accent-pressed: #4a6ae5;
+
+  /* ── Semantic Colors ── */
+  --ctl-success: #5cb85c;
+  --ctl-warn: #e8a838;
+  --ctl-danger: #e05555;
+
+  /* ── Semantic Ink (for text on white bg) ── */
+  --ctl-ink-accent: #4a6ae5;
+  --ctl-ink-success: #3d8b3d;
+  --ctl-ink-warn: #b8862e;
+  --ctl-ink-danger: #c94444;
+
+  /* ── Radii ── */
+  --ctl-r-xs: 6px;
+  --ctl-r-sm: 10px;
+  --ctl-r-md: 14px;
+  --ctl-r-lg: 18px;
+  --ctl-r-xl: 22px;
+  --ctl-r-pill: 999px;
+
+  /* ── Focus Ring ── */
+  --ctl-focus: 0 0 0 3px rgba(91, 127, 246, 0.2);
+  --ctl-focus-danger: 0 0 0 3px rgba(224, 85, 85, 0.15);
+
+  /* ── Motion ── */
+  --ctl-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ctl-ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
+  --ctl-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  --ctl-dur-micro: 100ms;
+  --ctl-dur-fast: 150ms;
+  --ctl-dur-normal: 250ms;
+  --ctl-dur-slow: 400ms;
+
+  /* ── Layout ── */
+  --ctl-toolbar-h: 40px;
+  --ctl-panel-w: 460px;
+  --ctl-panel-min-w: 320px;
+  --ctl-panel-max-w: 520px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--ctl-font-sans);
+  color: var(--ctl-fg);
+  background: transparent;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

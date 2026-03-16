@@ -1,0 +1,83 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - generic "已连接 (MJPEG)" [ref=e109]: 已连接
+        - generic [ref=e11]:
+          - button "后退" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+          - button "前进" [ref=e15] [cursor=pointer]:
+            - img [ref=e16]
+          - button "刷新" [ref=e18] [cursor=pointer]:
+            - img [ref=e19]
+      - generic [ref=e24]:
+        - generic "https://testerhome.com/jobs" [ref=e213] [cursor=pointer]
+        - generic [ref=e113]:
+          - generic "https://testerhome.com/jobs" [ref=e214] [cursor=pointer]:
+            - generic [ref=e215]: 测试之家
+          - button "新建标签页" [ref=e117] [cursor=pointer]:
+            - img [ref=e118]
+      - generic [ref=e27]:
+        - button "中文输入辅助" [ref=e29] [cursor=pointer]:
+          - img [ref=e30]
+        - button "收起工具栏" [ref=e33] [cursor=pointer]:
+          - img [ref=e34]
+        - button "设置" [ref=e37] [cursor=pointer]:
+          - img [ref=e38]
+        - button "打开日志面板" [ref=e41] [cursor=pointer]:
+          - img [ref=e42]
+        - button "全屏" [ref=e45] [cursor=pointer]:
+          - img [ref=e46]
+        - button "更多" [ref=e52] [cursor=pointer]:
+          - img [ref=e53]
+    - button "展开工具栏":
+      - img
+    - generic [ref=e57]:
+      - img [ref=e111]
+      - generic [ref=e68]:
+        - generic [ref=e69]:
+          - generic [ref=e71]:
+            - button "保存脚本" [ref=e146] [cursor=pointer]:
+              - img [ref=e147]
+            - button "删除（请先选中步骤）" [disabled]:
+              - img
+            - button "已保存的脚本" [ref=e73] [cursor=pointer]:
+              - img [ref=e74]
+            - button "分离面板" [ref=e76] [cursor=pointer]:
+              - img [ref=e77]
+          - generic [ref=e82]:
+            - generic [ref=e175]:
+              - generic "点击执行此步骤" [ref=e176] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e178] [cursor=pointer]: "'测试之家 测试之家（TesterHom'"
+              - generic "选中/取消选中"
+              - generic [ref=e179]:
+                - button "更多操作":
+                  - img
+            - generic [ref=e180]:
+              - generic "点击执行此步骤" [ref=e181] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e183] [cursor=pointer]: "'测试之家（TesterHome）由一线测试工程师发起和运营，'"
+              - generic "选中/取消选中"
+              - generic [ref=e184]:
+                - button "更多操作":
+                  - img
+            - generic [ref=e185]:
+              - generic "点击执行此步骤" [ref=e186] [cursor=pointer]: 点击
+              - generic "点击编辑" [ref=e188] [cursor=pointer]: "'注册 登录'"
+              - generic "选中/取消选中"
+              - generic [ref=e189]:
+                - button "更多操作":
+                  - img
+        - generic [ref=e93]:
+          - textbox "输入指令，回车发送" [ref=e97]
+          - generic [ref=e98]:
+            - generic [ref=e99]:
+              - button "录制" [active] [ref=e194] [cursor=pointer]:
+                - img [ref=e196]
+                - generic [ref=e199]: 录制
+              - button "执行" [ref=e156] [cursor=pointer]:
+                - img [ref=e157]
+                - text: 执行
+            - button "发送" [ref=e105] [cursor=pointer]:
+              - img [ref=e106]
+  - region "Notifications (F8)":
+    - list

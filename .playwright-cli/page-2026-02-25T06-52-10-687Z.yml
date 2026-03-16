@@ -1,0 +1,65 @@
+- generic [ref=e2]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - generic [ref=e10]: 已连接 (MJPEG)
+          - generic [ref=e11]:
+            - button "后退" [ref=e12] [cursor=pointer]:
+              - img [ref=e13]
+            - button "前进" [ref=e15] [cursor=pointer]:
+              - img [ref=e16]
+            - button "刷新" [ref=e18] [cursor=pointer]:
+              - img [ref=e19]
+        - generic [ref=e24]:
+          - generic "https://testerhome.com/" [ref=e97] [cursor=pointer]
+          - generic [ref=e98]:
+            - generic "https://testerhome.com/" [ref=e100] [cursor=pointer]:
+              - generic [ref=e101]: 测试之家
+            - button "新建标签页" [ref=e102] [cursor=pointer]:
+              - img [ref=e103]
+        - generic [ref=e27]:
+          - button "中文输入辅助" [ref=e29] [cursor=pointer]:
+            - img [ref=e30]
+          - button "录制" [ref=e32] [cursor=pointer]:
+            - img [ref=e33]
+            - text: 录制
+          - button "设置" [ref=e38] [cursor=pointer]:
+            - img [ref=e39]
+          - button "全屏" [ref=e42] [cursor=pointer]:
+            - img [ref=e43]
+          - button "更多" [ref=e49] [cursor=pointer]:
+            - img [ref=e50]
+      - img [ref=e104]
+    - generic [ref=e60]:
+      - generic "拖拽调整侧栏宽度" [ref=e61]
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - button "执行" [disabled]:
+                - img
+                - text: 执行
+            - generic [ref=e68]:
+              - button "保存脚本" [disabled]:
+                - img
+              - button "清空" [disabled]:
+                - img
+              - button "已保存的脚本" [ref=e70] [cursor=pointer]:
+                - img [ref=e71]
+              - button "打开日志面板" [ref=e73] [cursor=pointer]:
+                - img [ref=e74]
+              - button "收起/展开" [ref=e77] [cursor=pointer]:
+                - img [ref=e78]
+          - generic [ref=e83]:
+            - img [ref=e84]
+            - text: 暂无步骤在下方对话中生成步骤，或点击录制
+        - generic [ref=e88]:
+          - textbox "输入想执行的步骤，回车发送..." [ref=e89]
+          - generic [ref=e90]:
+            - button "展开/收起对话历史" [ref=e91] [cursor=pointer]:
+              - img [ref=e92]
+            - button "发送" [ref=e94] [cursor=pointer]:
+              - img [ref=e95]
+  - region "Notifications (F8)":
+    - list

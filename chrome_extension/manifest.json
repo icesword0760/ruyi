@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "WebRTC Screen Recorder",
+  "version": "1.0.0",
+  "description": "录制用户操作，支持回放测试流程",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_end",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icon48.png"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
