@@ -1,0 +1,1055 @@
+{
+  "timestamp": "2026-03-16T04:39:33Z",
+  "passed": true,
+  "summary": {
+    "total_operations": 46,
+    "total_obligations": 74,
+    "matched": 46,
+    "gap_a_detected": 0,
+    "gap_a_unresolved": 0,
+    "gap_b_detected": 0,
+    "gap_b_unresolved": 0,
+    "gap_c_detected": 67,
+    "gap_d_detected": 0
+  },
+  "dispositions": {
+    "scenario": 52,
+    "fold_into_feedback": 22,
+    "runtime_backlog": 0,
+    "non_user_visible": 0,
+    "surface_only": 0
+  },
+  "gap_details": [
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP1-B1",
+      "message": "Obligation 'COV-IS001-OP1-B1' user_perceivable_outcomes does not match operation 'IS-001-OP1' candidate_feedbacks (op=['WebRTC 连接建立，远程浏览器画面显示在主画面区', '连接状态更新为已连接'], obl=['WebRTC 连接建立，远程浏览器画面实时显示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP1",
+      "candidate_feedbacks": [
+        "WebRTC 连接建立，远程浏览器画面显示在主画面区",
+        "连接状态更新为已连接"
+      ],
+      "user_perceivable_outcomes": [
+        "WebRTC 连接建立，远程浏览器画面实时显示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP1-B2",
+      "message": "Obligation 'COV-IS001-OP1-B2' user_perceivable_outcomes does not match operation 'IS-001-OP1' candidate_feedbacks (op=['WebRTC 连接建立，远程浏览器画面显示在主画面区', '连接状态更新为已连接'], obl=['返回 400 错误：Invalid SDP offer'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP1",
+      "candidate_feedbacks": [
+        "WebRTC 连接建立，远程浏览器画面显示在主画面区",
+        "连接状态更新为已连接"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 400 错误：Invalid SDP offer"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP1-B3",
+      "message": "Obligation 'COV-IS001-OP1-B3' user_perceivable_outcomes does not match operation 'IS-001-OP1' candidate_feedbacks (op=['WebRTC 连接建立，远程浏览器画面显示在主画面区', '连接状态更新为已连接'], obl=['返回 500 错误，提示连接失败原因'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP1",
+      "candidate_feedbacks": [
+        "WebRTC 连接建立，远程浏览器画面显示在主画面区",
+        "连接状态更新为已连接"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 500 错误，提示连接失败原因"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP2-B1",
+      "message": "Obligation 'COV-IS001-OP2-B1' user_perceivable_outcomes does not match operation 'IS-001-OP2' candidate_feedbacks (op=['视频画面消失，显示占位符', '连接状态更新为未连接'], obl=['所有轮询停止，UI 重置', '视频画面消失，占位符显示', '连接状态更新为未连接'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP2",
+      "candidate_feedbacks": [
+        "视频画面消失，显示占位符",
+        "连接状态更新为未连接"
+      ],
+      "user_perceivable_outcomes": [
+        "所有轮询停止，UI 重置",
+        "视频画面消失，占位符显示",
+        "连接状态更新为未连接"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP3-B1",
+      "message": "Obligation 'COV-IS001-OP3-B1' user_perceivable_outcomes does not match operation 'IS-001-OP3' candidate_feedbacks (op=['确认后，无头浏览器资源释放，连接断开', '确认对话框弹出，提示将关闭 Chrome 进程'], obl=['无头浏览器资源释放成功，日志显示确认'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP3",
+      "candidate_feedbacks": [
+        "确认后，无头浏览器资源释放，连接断开",
+        "确认对话框弹出，提示将关闭 Chrome 进程"
+      ],
+      "user_perceivable_outcomes": [
+        "无头浏览器资源释放成功，日志显示确认"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP3-B2",
+      "message": "Obligation 'COV-IS001-OP3-B2' user_perceivable_outcomes does not match operation 'IS-001-OP3' candidate_feedbacks (op=['确认后，无头浏览器资源释放，连接断开', '确认对话框弹出，提示将关闭 Chrome 进程'], obl=['无操作，保持当前连接状态'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP3",
+      "candidate_feedbacks": [
+        "确认后，无头浏览器资源释放，连接断开",
+        "确认对话框弹出，提示将关闭 Chrome 进程"
+      ],
+      "user_perceivable_outcomes": [
+        "无操作，保持当前连接状态"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS001-OP3-B3",
+      "message": "Obligation 'COV-IS001-OP3-B3' user_perceivable_outcomes does not match operation 'IS-001-OP3' candidate_feedbacks (op=['确认后，无头浏览器资源释放，连接断开', '确认对话框弹出，提示将关闭 Chrome 进程'], obl=['显示释放失败错误提示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-001-OP3",
+      "candidate_feedbacks": [
+        "确认后，无头浏览器资源释放，连接断开",
+        "确认对话框弹出，提示将关闭 Chrome 进程"
+      ],
+      "user_perceivable_outcomes": [
+        "显示释放失败错误提示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS002-OP1-B1",
+      "message": "Obligation 'COV-IS002-OP1-B1' user_perceivable_outcomes does not match operation 'IS-002-OP1' candidate_feedbacks (op=['标签隐藏，输入框显示并获得焦点，当前 URL 被全选'], obl=['标签隐藏，输入框显示并获得焦点，URL 被全选'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-002-OP1",
+      "candidate_feedbacks": [
+        "标签隐藏，输入框显示并获得焦点，当前 URL 被全选"
+      ],
+      "user_perceivable_outcomes": [
+        "标签隐藏，输入框显示并获得焦点，URL 被全选"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS002-OP3-B1",
+      "message": "Obligation 'COV-IS002-OP3-B1' user_perceivable_outcomes does not match operation 'IS-002-OP3' candidate_feedbacks (op=['导航失败时日志面板显示错误信息', '输入框隐藏，标签恢复显示新 URL', '远程浏览器开始导航到目标 URL'], obl=['日志面板显示导航成功', '输入框隐藏，标签显示新 URL', '远程浏览器导航到目标 URL'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-002-OP3",
+      "candidate_feedbacks": [
+        "导航失败时日志面板显示错误信息",
+        "输入框隐藏，标签恢复显示新 URL",
+        "远程浏览器开始导航到目标 URL"
+      ],
+      "user_perceivable_outcomes": [
+        "日志面板显示导航成功",
+        "输入框隐藏，标签显示新 URL",
+        "远程浏览器导航到目标 URL"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS002-OP3-B2",
+      "message": "Obligation 'COV-IS002-OP3-B2' user_perceivable_outcomes does not match operation 'IS-002-OP3' candidate_feedbacks (op=['导航失败时日志面板显示错误信息', '输入框隐藏，标签恢复显示新 URL', '远程浏览器开始导航到目标 URL'], obl=['输入框隐藏，标签恢复，不执行导航'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-002-OP3",
+      "candidate_feedbacks": [
+        "导航失败时日志面板显示错误信息",
+        "输入框隐藏，标签恢复显示新 URL",
+        "远程浏览器开始导航到目标 URL"
+      ],
+      "user_perceivable_outcomes": [
+        "输入框隐藏，标签恢复，不执行导航"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS002-OP3-B3",
+      "message": "Obligation 'COV-IS002-OP3-B3' user_perceivable_outcomes does not match operation 'IS-002-OP3' candidate_feedbacks (op=['导航失败时日志面板显示错误信息', '输入框隐藏，标签恢复显示新 URL', '远程浏览器开始导航到目标 URL'], obl=['日志面板显示导航失败错误信息'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-002-OP3",
+      "candidate_feedbacks": [
+        "导航失败时日志面板显示错误信息",
+        "输入框隐藏，标签恢复显示新 URL",
+        "远程浏览器开始导航到目标 URL"
+      ],
+      "user_perceivable_outcomes": [
+        "日志面板显示导航失败错误信息"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS003-OP1-B1",
+      "message": "Obligation 'COV-IS003-OP1-B1' user_perceivable_outcomes does not match operation 'IS-003-OP1' candidate_feedbacks (op=['操作失败时显示错误提示', '远程浏览器回退到上一页，地址栏更新'], obl=['远程浏览器回退到上一页，地址栏更新'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-003-OP1",
+      "candidate_feedbacks": [
+        "操作失败时显示错误提示",
+        "远程浏览器回退到上一页，地址栏更新"
+      ],
+      "user_perceivable_outcomes": [
+        "远程浏览器回退到上一页，地址栏更新"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS003-OP1-B2",
+      "message": "Obligation 'COV-IS003-OP1-B2' user_perceivable_outcomes does not match operation 'IS-003-OP1' candidate_feedbacks (op=['操作失败时显示错误提示', '远程浏览器回退到上一页，地址栏更新'], obl=['显示操作失败错误提示（Toast 或 AlertDialog）'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-003-OP1",
+      "candidate_feedbacks": [
+        "操作失败时显示错误提示",
+        "远程浏览器回退到上一页，地址栏更新"
+      ],
+      "user_perceivable_outcomes": [
+        "显示操作失败错误提示（Toast 或 AlertDialog）"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS003-OP2-B1",
+      "message": "Obligation 'COV-IS003-OP2-B1' user_perceivable_outcomes does not match operation 'IS-003-OP2' candidate_feedbacks (op=['操作失败时显示错误提示', '远程浏览器前进到下一页，地址栏更新'], obl=['远程浏览器前进到下一页，地址栏更新'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-003-OP2",
+      "candidate_feedbacks": [
+        "操作失败时显示错误提示",
+        "远程浏览器前进到下一页，地址栏更新"
+      ],
+      "user_perceivable_outcomes": [
+        "远程浏览器前进到下一页，地址栏更新"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS003-OP2-B2",
+      "message": "Obligation 'COV-IS003-OP2-B2' user_perceivable_outcomes does not match operation 'IS-003-OP2' candidate_feedbacks (op=['操作失败时显示错误提示', '远程浏览器前进到下一页，地址栏更新'], obl=['显示操作失败错误提示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-003-OP2",
+      "candidate_feedbacks": [
+        "操作失败时显示错误提示",
+        "远程浏览器前进到下一页，地址栏更新"
+      ],
+      "user_perceivable_outcomes": [
+        "显示操作失败错误提示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS003-OP3-B1",
+      "message": "Obligation 'COV-IS003-OP3-B1' user_perceivable_outcomes does not match operation 'IS-003-OP3' candidate_feedbacks (op=['操作失败时显示错误提示', '远程浏览器重新加载当前页面'], obl=['远程浏览器重新加载当前页面'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-003-OP3",
+      "candidate_feedbacks": [
+        "操作失败时显示错误提示",
+        "远程浏览器重新加载当前页面"
+      ],
+      "user_perceivable_outcomes": [
+        "远程浏览器重新加载当前页面"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS003-OP3-B2",
+      "message": "Obligation 'COV-IS003-OP3-B2' user_perceivable_outcomes does not match operation 'IS-003-OP3' candidate_feedbacks (op=['操作失败时显示错误提示', '远程浏览器重新加载当前页面'], obl=['显示操作失败错误提示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-003-OP3",
+      "candidate_feedbacks": [
+        "操作失败时显示错误提示",
+        "远程浏览器重新加载当前页面"
+      ],
+      "user_perceivable_outcomes": [
+        "显示操作失败错误提示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS004-OP1-B1",
+      "message": "Obligation 'COV-IS004-OP1-B1' user_perceivable_outcomes does not match operation 'IS-004-OP1' candidate_feedbacks (op=['切换失败时显示错误提示', '目标标签页高亮为活动状态，远程画面切换'], obl=['目标标签页高亮，远程画面切换到新标签内容'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-004-OP1",
+      "candidate_feedbacks": [
+        "切换失败时显示错误提示",
+        "目标标签页高亮为活动状态，远程画面切换"
+      ],
+      "user_perceivable_outcomes": [
+        "目标标签页高亮，远程画面切换到新标签内容"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS004-OP1-B2",
+      "message": "Obligation 'COV-IS004-OP1-B2' user_perceivable_outcomes does not match operation 'IS-004-OP1' candidate_feedbacks (op=['切换失败时显示错误提示', '目标标签页高亮为活动状态，远程画面切换'], obl=['显示切换标签页失败错误提示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-004-OP1",
+      "candidate_feedbacks": [
+        "切换失败时显示错误提示",
+        "目标标签页高亮为活动状态，远程画面切换"
+      ],
+      "user_perceivable_outcomes": [
+        "显示切换标签页失败错误提示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS004-OP2-B1",
+      "message": "Obligation 'COV-IS004-OP2-B1' user_perceivable_outcomes does not match operation 'IS-004-OP2' candidate_feedbacks (op=['最后一个标签页无法关闭，显示提示', '标签页关闭，标签栏更新'], obl=['标签页关闭，标签栏更新'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-004-OP2",
+      "candidate_feedbacks": [
+        "最后一个标签页无法关闭，显示提示",
+        "标签页关闭，标签栏更新"
+      ],
+      "user_perceivable_outcomes": [
+        "标签页关闭，标签栏更新"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS004-OP2-B2",
+      "message": "Obligation 'COV-IS004-OP2-B2' user_perceivable_outcomes does not match operation 'IS-004-OP2' candidate_feedbacks (op=['最后一个标签页无法关闭，显示提示', '标签页关闭，标签栏更新'], obl=['显示提示：不能关闭最后一个标签页'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-004-OP2",
+      "candidate_feedbacks": [
+        "最后一个标签页无法关闭，显示提示",
+        "标签页关闭，标签栏更新"
+      ],
+      "user_perceivable_outcomes": [
+        "显示提示：不能关闭最后一个标签页"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS004-OP3-B1",
+      "message": "Obligation 'COV-IS004-OP3-B1' user_perceivable_outcomes does not match operation 'IS-004-OP3' candidate_feedbacks (op=['创建失败时显示错误提示', '弹出输入框提示输入 URL', '新标签页创建成功后，自动切换到新标签'], obl=['新标签页创建，自动切换到新标签'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-004-OP3",
+      "candidate_feedbacks": [
+        "创建失败时显示错误提示",
+        "弹出输入框提示输入 URL",
+        "新标签页创建成功后，自动切换到新标签"
+      ],
+      "user_perceivable_outcomes": [
+        "新标签页创建，自动切换到新标签"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS004-OP3-B2",
+      "message": "Obligation 'COV-IS004-OP3-B2' user_perceivable_outcomes does not match operation 'IS-004-OP3' candidate_feedbacks (op=['创建失败时显示错误提示', '弹出输入框提示输入 URL', '新标签页创建成功后，自动切换到新标签'], obl=['显示创建标签页失败错误提示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-004-OP3",
+      "candidate_feedbacks": [
+        "创建失败时显示错误提示",
+        "弹出输入框提示输入 URL",
+        "新标签页创建成功后，自动切换到新标签"
+      ],
+      "user_perceivable_outcomes": [
+        "显示创建标签页失败错误提示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS005-OP1-B1",
+      "message": "Obligation 'COV-IS005-OP1-B1' user_perceivable_outcomes does not match operation 'IS-005-OP1' candidate_feedbacks (op=['当前连接断开', '按新模式重新建立连接', '日志面板显示模式切换进度'], obl=['当前连接断开，WebRTC 模式连接建立', '日志面板显示模式切换进度'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-005-OP1",
+      "candidate_feedbacks": [
+        "当前连接断开",
+        "按新模式重新建立连接",
+        "日志面板显示模式切换进度"
+      ],
+      "user_perceivable_outcomes": [
+        "当前连接断开，WebRTC 模式连接建立",
+        "日志面板显示模式切换进度"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS005-OP1-B2",
+      "message": "Obligation 'COV-IS005-OP1-B2' user_perceivable_outcomes does not match operation 'IS-005-OP1' candidate_feedbacks (op=['当前连接断开', '按新模式重新建立连接', '日志面板显示模式切换进度'], obl=['当前连接断开，MJPEG 模式连接建立'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-005-OP1",
+      "candidate_feedbacks": [
+        "当前连接断开",
+        "按新模式重新建立连接",
+        "日志面板显示模式切换进度"
+      ],
+      "user_perceivable_outcomes": [
+        "当前连接断开，MJPEG 模式连接建立"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS005-OP1-B3",
+      "message": "Obligation 'COV-IS005-OP1-B3' user_perceivable_outcomes does not match operation 'IS-005-OP1' candidate_feedbacks (op=['当前连接断开', '按新模式重新建立连接', '日志面板显示模式切换进度'], obl=['当前连接断开，Scrcpy H.264 模式连接建立'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-005-OP1",
+      "candidate_feedbacks": [
+        "当前连接断开",
+        "按新模式重新建立连接",
+        "日志面板显示模式切换进度"
+      ],
+      "user_perceivable_outcomes": [
+        "当前连接断开，Scrcpy H.264 模式连接建立"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS005-OP1-B4",
+      "message": "Obligation 'COV-IS005-OP1-B4' user_perceivable_outcomes does not match operation 'IS-005-OP1' candidate_feedbacks (op=['当前连接断开', '按新模式重新建立连接', '日志面板显示模式切换进度'], obl=['日志面板显示已经是目标模式，无需切换'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-005-OP1",
+      "candidate_feedbacks": [
+        "当前连接断开",
+        "按新模式重新建立连接",
+        "日志面板显示模式切换进度"
+      ],
+      "user_perceivable_outcomes": [
+        "日志面板显示已经是目标模式，无需切换"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS006-OP1-B1",
+      "message": "Obligation 'COV-IS006-OP1-B1' user_perceivable_outcomes does not match operation 'IS-006-OP1' candidate_feedbacks (op=['控制状态在启用/禁用间切换', '状态徽章更新显示当前状态'], obl=['控制状态切换，状态徽章更新（开/关）'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-006-OP1",
+      "candidate_feedbacks": [
+        "控制状态在启用/禁用间切换",
+        "状态徽章更新显示当前状态"
+      ],
+      "user_perceivable_outcomes": [
+        "控制状态切换，状态徽章更新（开/关）"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS006-OP2-B1",
+      "message": "Obligation 'COV-IS006-OP2-B1' user_perceivable_outcomes does not match operation 'IS-006-OP2' candidate_feedbacks (op=['点击事件传输到远程浏览器，远程页面响应点击'], obl=['远程浏览器响应点击事件'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-006-OP2",
+      "candidate_feedbacks": [
+        "点击事件传输到远程浏览器，远程页面响应点击"
+      ],
+      "user_perceivable_outcomes": [
+        "远程浏览器响应点击事件"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS006-OP2-B2",
+      "message": "Obligation 'COV-IS006-OP2-B2' user_perceivable_outcomes does not match operation 'IS-006-OP2' candidate_feedbacks (op=['点击事件传输到远程浏览器，远程页面响应点击'], obl=['点击事件被录制为步骤，前端实时显示新步骤'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-006-OP2",
+      "candidate_feedbacks": [
+        "点击事件传输到远程浏览器，远程页面响应点击"
+      ],
+      "user_perceivable_outcomes": [
+        "点击事件被录制为步骤，前端实时显示新步骤"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS006-OP3-B1",
+      "message": "Obligation 'COV-IS006-OP3-B1' user_perceivable_outcomes does not match operation 'IS-006-OP3' candidate_feedbacks (op=['按键事件传输到远程浏览器，远程页面响应键盘输入'], obl=['远程浏览器响应键盘输入'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-006-OP3",
+      "candidate_feedbacks": [
+        "按键事件传输到远程浏览器，远程页面响应键盘输入"
+      ],
+      "user_perceivable_outcomes": [
+        "远程浏览器响应键盘输入"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS006-OP4-B1",
+      "message": "Obligation 'COV-IS006-OP4-B1' user_perceivable_outcomes does not match operation 'IS-006-OP4' candidate_feedbacks (op=['滚动事件传输到远程浏览器，远程页面滚动'], obl=['远程浏览器页面滚动'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-006-OP4",
+      "candidate_feedbacks": [
+        "滚动事件传输到远程浏览器，远程页面滚动"
+      ],
+      "user_perceivable_outcomes": [
+        "远程浏览器页面滚动"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP1-B1",
+      "message": "Obligation 'COV-IS007-OP1-B1' user_perceivable_outcomes does not match operation 'IS-007-OP1' candidate_feedbacks (op=['CDP 录制失败时显示错误', '录制指示器显示', '录制状态变为录制中'], obl=['录制状态变为录制中，返回 recordingId'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP1",
+      "candidate_feedbacks": [
+        "CDP 录制失败时显示错误",
+        "录制指示器显示",
+        "录制状态变为录制中"
+      ],
+      "user_perceivable_outcomes": [
+        "录制状态变为录制中，返回 recordingId"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP1-B2",
+      "message": "Obligation 'COV-IS007-OP1-B2' user_perceivable_outcomes does not match operation 'IS-007-OP1' candidate_feedbacks (op=['CDP 录制失败时显示错误', '录制指示器显示', '录制状态变为录制中'], obl=['返回 503 错误：CDP client not available'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP1",
+      "candidate_feedbacks": [
+        "CDP 录制失败时显示错误",
+        "录制指示器显示",
+        "录制状态变为录制中"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 503 错误：CDP client not available"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP2-B1",
+      "message": "Obligation 'COV-IS007-OP2-B1' user_perceivable_outcomes does not match operation 'IS-007-OP2' candidate_feedbacks (op=['前端通知录制已停止及步骤数量', '录制状态变为已停止', '录制的步骤持久化到磁盘'], obl=['前端通知录制已停止及步骤数量', '录制停止，步骤持久化到磁盘'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP2",
+      "candidate_feedbacks": [
+        "前端通知录制已停止及步骤数量",
+        "录制状态变为已停止",
+        "录制的步骤持久化到磁盘"
+      ],
+      "user_perceivable_outcomes": [
+        "前端通知录制已停止及步骤数量",
+        "录制停止，步骤持久化到磁盘"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP2-B2",
+      "message": "Obligation 'COV-IS007-OP2-B2' user_perceivable_outcomes does not match operation 'IS-007-OP2' candidate_feedbacks (op=['前端通知录制已停止及步骤数量', '录制状态变为已停止', '录制的步骤持久化到磁盘'], obl=['返回 404 错误：No active recording'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP2",
+      "candidate_feedbacks": [
+        "前端通知录制已停止及步骤数量",
+        "录制状态变为已停止",
+        "录制的步骤持久化到磁盘"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 404 错误：No active recording"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP3-B1",
+      "message": "Obligation 'COV-IS007-OP3-B1' user_perceivable_outcomes does not match operation 'IS-007-OP3' candidate_feedbacks (op=['加载并显示该录制的完整步骤列表', '录制不存在时显示 404 错误'], obl=['返回录制的完整步骤列表'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP3",
+      "candidate_feedbacks": [
+        "加载并显示该录制的完整步骤列表",
+        "录制不存在时显示 404 错误"
+      ],
+      "user_perceivable_outcomes": [
+        "返回录制的完整步骤列表"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP3-B2",
+      "message": "Obligation 'COV-IS007-OP3-B2' user_perceivable_outcomes does not match operation 'IS-007-OP3' candidate_feedbacks (op=['加载并显示该录制的完整步骤列表', '录制不存在时显示 404 错误'], obl=['返回 404 错误：Recording not found'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP3",
+      "candidate_feedbacks": [
+        "加载并显示该录制的完整步骤列表",
+        "录制不存在时显示 404 错误"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 404 错误：Recording not found"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP4-B1",
+      "message": "Obligation 'COV-IS007-OP4-B1' user_perceivable_outcomes does not match operation 'IS-007-OP4' candidate_feedbacks (op=['录制不存在时显示错误', '录制从列表和磁盘中删除'], obl=['录制从磁盘删除'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP4",
+      "candidate_feedbacks": [
+        "录制不存在时显示错误",
+        "录制从列表和磁盘中删除"
+      ],
+      "user_perceivable_outcomes": [
+        "录制从磁盘删除"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP5-B1",
+      "message": "Obligation 'COV-IS007-OP5-B1' user_perceivable_outcomes does not match operation 'IS-007-OP5' candidate_feedbacks (op=['名称为空时显示错误', '录制名称更新为新名称'], obl=['录制名称更新为新名称'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP5",
+      "candidate_feedbacks": [
+        "名称为空时显示错误",
+        "录制名称更新为新名称"
+      ],
+      "user_perceivable_outcomes": [
+        "录制名称更新为新名称"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS007-OP5-B2",
+      "message": "Obligation 'COV-IS007-OP5-B2' user_perceivable_outcomes does not match operation 'IS-007-OP5' candidate_feedbacks (op=['名称为空时显示错误', '录制名称更新为新名称'], obl=['返回 400 错误：Name is required'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-007-OP5",
+      "candidate_feedbacks": [
+        "名称为空时显示错误",
+        "录制名称更新为新名称"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 400 错误：Name is required"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS008-OP2-B1",
+      "message": "Obligation 'COV-IS008-OP2-B1' user_perceivable_outcomes does not match operation 'IS-008-OP2' candidate_feedbacks (op=['AI 开始处理，对话区显示思考状态', 'AI 服务未启动时显示连接错误', 'SSE 流式返回执行进度和步骤'], obl=['AI 开始处理，SSE 流式返回思考和执行步骤', '对话区实时显示 AI 响应'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-008-OP2",
+      "candidate_feedbacks": [
+        "AI 开始处理，对话区显示思考状态",
+        "AI 服务未启动时显示连接错误",
+        "SSE 流式返回执行进度和步骤"
+      ],
+      "user_perceivable_outcomes": [
+        "AI 开始处理，SSE 流式返回思考和执行步骤",
+        "对话区实时显示 AI 响应"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS008-OP2-B2",
+      "message": "Obligation 'COV-IS008-OP2-B2' user_perceivable_outcomes does not match operation 'IS-008-OP2' candidate_feedbacks (op=['AI 开始处理，对话区显示思考状态', 'AI 服务未启动时显示连接错误', 'SSE 流式返回执行进度和步骤'], obl=['SSE 返回错误事件：AI 服务未启动'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-008-OP2",
+      "candidate_feedbacks": [
+        "AI 开始处理，对话区显示思考状态",
+        "AI 服务未启动时显示连接错误",
+        "SSE 流式返回执行进度和步骤"
+      ],
+      "user_perceivable_outcomes": [
+        "SSE 返回错误事件：AI 服务未启动"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS008-OP3-B1",
+      "message": "Obligation 'COV-IS008-OP3-B1' user_perceivable_outcomes does not match operation 'IS-008-OP3' candidate_feedbacks (op=['执行失败时显示简化的用户友好错误', '执行成功时步骤标记为完成', '步骤开始执行，显示执行进度'], obl=['步骤标记为执行成功'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-008-OP3",
+      "candidate_feedbacks": [
+        "执行失败时显示简化的用户友好错误",
+        "执行成功时步骤标记为完成",
+        "步骤开始执行，显示执行进度"
+      ],
+      "user_perceivable_outcomes": [
+        "步骤标记为执行成功"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS008-OP3-B2",
+      "message": "Obligation 'COV-IS008-OP3-B2' user_perceivable_outcomes does not match operation 'IS-008-OP3' candidate_feedbacks (op=['执行失败时显示简化的用户友好错误', '执行成功时步骤标记为完成', '步骤开始执行，显示执行进度'], obl=['显示简化的用户友好错误提示（如超时、元素未找到等）'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-008-OP3",
+      "candidate_feedbacks": [
+        "执行失败时显示简化的用户友好错误",
+        "执行成功时步骤标记为完成",
+        "步骤开始执行，显示执行进度"
+      ],
+      "user_perceivable_outcomes": [
+        "显示简化的用户友好错误提示（如超时、元素未找到等）"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS008-OP4-B1",
+      "message": "Obligation 'COV-IS008-OP4-B1' user_perceivable_outcomes does not match operation 'IS-008-OP4' candidate_feedbacks (op=['定位信息重新采集并更新', '重新生成失败时显示错误提示'], obl=['定位信息重新采集并更新到步骤'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-008-OP4",
+      "candidate_feedbacks": [
+        "定位信息重新采集并更新",
+        "重新生成失败时显示错误提示"
+      ],
+      "user_perceivable_outcomes": [
+        "定位信息重新采集并更新到步骤"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS008-OP4-B2",
+      "message": "Obligation 'COV-IS008-OP4-B2' user_perceivable_outcomes does not match operation 'IS-008-OP4' candidate_feedbacks (op=['定位信息重新采集并更新', '重新生成失败时显示错误提示'], obl=['显示重新生成失败错误提示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-008-OP4",
+      "candidate_feedbacks": [
+        "定位信息重新采集并更新",
+        "重新生成失败时显示错误提示"
+      ],
+      "user_perceivable_outcomes": [
+        "显示重新生成失败错误提示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP1-B1",
+      "message": "Obligation 'COV-IS009-OP1-B1' user_perceivable_outcomes does not match operation 'IS-009-OP1' candidate_feedbacks (op=['已保存脚本列表更新', '脚本保存到服务器磁盘'], obl=['脚本保存到服务器，返回脚本 ID'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP1",
+      "candidate_feedbacks": [
+        "已保存脚本列表更新",
+        "脚本保存到服务器磁盘"
+      ],
+      "user_perceivable_outcomes": [
+        "脚本保存到服务器，返回脚本 ID"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP2-B1",
+      "message": "Obligation 'COV-IS009-OP2-B1' user_perceivable_outcomes does not match operation 'IS-009-OP2' candidate_feedbacks (op=['脚本不存在时显示错误', '脚本步骤加载到编辑区'], obl=['脚本内容返回，步骤加载到编辑区'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP2",
+      "candidate_feedbacks": [
+        "脚本不存在时显示错误",
+        "脚本步骤加载到编辑区"
+      ],
+      "user_perceivable_outcomes": [
+        "脚本内容返回，步骤加载到编辑区"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP2-B2",
+      "message": "Obligation 'COV-IS009-OP2-B2' user_perceivable_outcomes does not match operation 'IS-009-OP2' candidate_feedbacks (op=['脚本不存在时显示错误', '脚本步骤加载到编辑区'], obl=['返回 404 错误：Script not found'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP2",
+      "candidate_feedbacks": [
+        "脚本不存在时显示错误",
+        "脚本步骤加载到编辑区"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 404 错误：Script not found"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP3-B1",
+      "message": "Obligation 'COV-IS009-OP3-B1' user_perceivable_outcomes does not match operation 'IS-009-OP3' candidate_feedbacks (op=['已保存脚本列表更新', '脚本从服务器删除'], obl=['脚本从服务器删除'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP3",
+      "candidate_feedbacks": [
+        "已保存脚本列表更新",
+        "脚本从服务器删除"
+      ],
+      "user_perceivable_outcomes": [
+        "脚本从服务器删除"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP4-B1",
+      "message": "Obligation 'COV-IS009-OP4-B1' user_perceivable_outcomes does not match operation 'IS-009-OP4' candidate_feedbacks (op=['浏览器下载 Python 测试文件', '脚本不存在时显示错误'], obl=['浏览器下载 Python 测试文件（pytest + allure 格式）'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP4",
+      "candidate_feedbacks": [
+        "浏览器下载 Python 测试文件",
+        "脚本不存在时显示错误"
+      ],
+      "user_perceivable_outcomes": [
+        "浏览器下载 Python 测试文件（pytest + allure 格式）"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP5-B1",
+      "message": "Obligation 'COV-IS009-OP5-B1' user_perceivable_outcomes does not match operation 'IS-009-OP5' candidate_feedbacks (op=['名称为空时显示错误', '脚本名称更新'], obl=['脚本名称更新'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP5",
+      "candidate_feedbacks": [
+        "名称为空时显示错误",
+        "脚本名称更新"
+      ],
+      "user_perceivable_outcomes": [
+        "脚本名称更新"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS009-OP5-B2",
+      "message": "Obligation 'COV-IS009-OP5-B2' user_perceivable_outcomes does not match operation 'IS-009-OP5' candidate_feedbacks (op=['名称为空时显示错误', '脚本名称更新'], obl=['返回 400 错误：Name is required'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-009-OP5",
+      "candidate_feedbacks": [
+        "名称为空时显示错误",
+        "脚本名称更新"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 400 错误：Name is required"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS010-OP1-B1",
+      "message": "Obligation 'COV-IS010-OP1-B1' user_perceivable_outcomes does not match operation 'IS-010-OP1' candidate_feedbacks (op=['其他弹窗自动关闭', '设置弹窗显示，AI 引擎设置同步'], obl=['AI 引擎设置同步', '设置弹窗显示/隐藏'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-010-OP1",
+      "candidate_feedbacks": [
+        "其他弹窗自动关闭",
+        "设置弹窗显示，AI 引擎设置同步"
+      ],
+      "user_perceivable_outcomes": [
+        "AI 引擎设置同步",
+        "设置弹窗显示/隐藏"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS010-OP3-B1",
+      "message": "Obligation 'COV-IS010-OP3-B1' user_perceivable_outcomes does not match operation 'IS-010-OP3' candidate_feedbacks (op=['AI 引擎设置更新，对应引擎的配置区域显示', '设置持久化到 localStorage'], obl=['AI 引擎设置更新，对应配置区域显示', '设置持久化到 localStorage'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-010-OP3",
+      "candidate_feedbacks": [
+        "AI 引擎设置更新，对应引擎的配置区域显示",
+        "设置持久化到 localStorage"
+      ],
+      "user_perceivable_outcomes": [
+        "AI 引擎设置更新，对应配置区域显示",
+        "设置持久化到 localStorage"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS010-OP4-B1",
+      "message": "Obligation 'COV-IS010-OP4-B1' user_perceivable_outcomes does not match operation 'IS-010-OP4' candidate_feedbacks (op=['如传输模式有变更，触发模式切换', '画质和传输设置应用到服务器'], obl=['画质和传输设置应用到服务器'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-010-OP4",
+      "candidate_feedbacks": [
+        "如传输模式有变更，触发模式切换",
+        "画质和传输设置应用到服务器"
+      ],
+      "user_perceivable_outcomes": [
+        "画质和传输设置应用到服务器"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS011-OP1-B1",
+      "message": "Obligation 'COV-IS011-OP1-B1' user_perceivable_outcomes does not match operation 'IS-011-OP1' candidate_feedbacks (op=['对应视图的日志内容显示，另一视图隐藏'], obl=['目标视图的日志内容显示，另一视图隐藏'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-011-OP1",
+      "candidate_feedbacks": [
+        "对应视图的日志内容显示，另一视图隐藏"
+      ],
+      "user_perceivable_outcomes": [
+        "目标视图的日志内容显示，另一视图隐藏"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS011-OP2-B1",
+      "message": "Obligation 'COV-IS011-OP2-B1' user_perceivable_outcomes does not match operation 'IS-011-OP2' candidate_feedbacks (op=['日志列表按选定类型过滤'], obl=['日志列表按选定类型过滤显示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-011-OP2",
+      "candidate_feedbacks": [
+        "日志列表按选定类型过滤"
+      ],
+      "user_perceivable_outcomes": [
+        "日志列表按选定类型过滤显示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS011-OP3-B1",
+      "message": "Obligation 'COV-IS011-OP3-B1' user_perceivable_outcomes does not match operation 'IS-011-OP3' candidate_feedbacks (op=['日志列表按关键词过滤'], obl=['日志列表按关键词过滤显示'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-011-OP3",
+      "candidate_feedbacks": [
+        "日志列表按关键词过滤"
+      ],
+      "user_perceivable_outcomes": [
+        "日志列表按关键词过滤显示"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS012-OP2-B1",
+      "message": "Obligation 'COV-IS012-OP2-B1' user_perceivable_outcomes does not match operation 'IS-012-OP2' candidate_feedbacks (op=['松开后位置持久化到 localStorage', '浮动按钮跟随鼠标移动'], obl=['位置持久化到 localStorage', '浮动按钮跟随鼠标移动到新位置'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-012-OP2",
+      "candidate_feedbacks": [
+        "松开后位置持久化到 localStorage",
+        "浮动按钮跟随鼠标移动"
+      ],
+      "user_perceivable_outcomes": [
+        "位置持久化到 localStorage",
+        "浮动按钮跟随鼠标移动到新位置"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS013-OP1-B1",
+      "message": "Obligation 'COV-IS013-OP1-B1' user_perceivable_outcomes does not match operation 'IS-013-OP1' candidate_feedbacks (op=['IME 输入弹窗显示，输入框获得焦点', '其他弹窗自动关闭'], obl=['IME 输入弹窗显示，输入框获得焦点'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-013-OP1",
+      "candidate_feedbacks": [
+        "IME 输入弹窗显示，输入框获得焦点",
+        "其他弹窗自动关闭"
+      ],
+      "user_perceivable_outcomes": [
+        "IME 输入弹窗显示，输入框获得焦点"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS013-OP3-B1",
+      "message": "Obligation 'COV-IS013-OP3-B1' user_perceivable_outcomes does not match operation 'IS-013-OP3' candidate_feedbacks (op=['文本作为键盘事件发送到远程浏览器', '输入框清空', '远程控制未就绪时显示警告'], obl=['文本作为键盘事件发送到远程浏览器，输入框清空'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-013-OP3",
+      "candidate_feedbacks": [
+        "文本作为键盘事件发送到远程浏览器",
+        "输入框清空",
+        "远程控制未就绪时显示警告"
+      ],
+      "user_perceivable_outcomes": [
+        "文本作为键盘事件发送到远程浏览器，输入框清空"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS013-OP3-B2",
+      "message": "Obligation 'COV-IS013-OP3-B2' user_perceivable_outcomes does not match operation 'IS-013-OP3' candidate_feedbacks (op=['文本作为键盘事件发送到远程浏览器', '输入框清空', '远程控制未就绪时显示警告'], obl=['控制台显示警告：远程控制未就绪'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-013-OP3",
+      "candidate_feedbacks": [
+        "文本作为键盘事件发送到远程浏览器",
+        "输入框清空",
+        "远程控制未就绪时显示警告"
+      ],
+      "user_perceivable_outcomes": [
+        "控制台显示警告：远程控制未就绪"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS015-OP1-B1",
+      "message": "Obligation 'COV-IS015-OP1-B1' user_perceivable_outcomes does not match operation 'IS-015-OP1' candidate_feedbacks (op=['OCR 服务未启动时返回 503 错误', '提取的文字返回并显示', '缺少图片参数时返回错误'], obl=['提取的文字返回'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-015-OP1",
+      "candidate_feedbacks": [
+        "OCR 服务未启动时返回 503 错误",
+        "提取的文字返回并显示",
+        "缺少图片参数时返回错误"
+      ],
+      "user_perceivable_outcomes": [
+        "提取的文字返回"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS015-OP1-B2",
+      "message": "Obligation 'COV-IS015-OP1-B2' user_perceivable_outcomes does not match operation 'IS-015-OP1' candidate_feedbacks (op=['OCR 服务未启动时返回 503 错误', '提取的文字返回并显示', '缺少图片参数时返回错误'], obl=['返回 400 错误：缺少 image 参数'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-015-OP1",
+      "candidate_feedbacks": [
+        "OCR 服务未启动时返回 503 错误",
+        "提取的文字返回并显示",
+        "缺少图片参数时返回错误"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 400 错误：缺少 image 参数"
+      ]
+    },
+    {
+      "gap_type": "GAP-C",
+      "entity_id": "COV-IS015-OP1-B3",
+      "message": "Obligation 'COV-IS015-OP1-B3' user_perceivable_outcomes does not match operation 'IS-015-OP1' candidate_feedbacks (op=['OCR 服务未启动时返回 503 错误', '提取的文字返回并显示', '缺少图片参数时返回错误'], obl=['返回 503 错误：RapidOCR 服务未启动'])",
+      "rule_id": "gap_c_feedback_mismatch",
+      "waived": false,
+      "op_id": "IS-015-OP1",
+      "candidate_feedbacks": [
+        "OCR 服务未启动时返回 503 错误",
+        "提取的文字返回并显示",
+        "缺少图片参数时返回错误"
+      ],
+      "user_perceivable_outcomes": [
+        "返回 503 错误：RapidOCR 服务未启动"
+      ]
+    }
+  ],
+  "backlog": [],
+  "errors": []
+}
