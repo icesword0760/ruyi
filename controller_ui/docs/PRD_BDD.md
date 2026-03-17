@@ -7,7 +7,7 @@ aliases: [PRD, BDD需求文档, Controller PRD]
 
 # Controller 页面 BDD 风格产品需求文档
 
-> 本文档按产品视角将 Controller 页面拆分为 65 个原子模块，每个模块的交互行为以 BDD（Given-When-Then）风格严格描述，所有 Scenario 标注对应源码文件及行号。
+> 本文档按产品视角将 Controller 页面拆分为 67 个原子模块，每个模块的交互行为以 BDD（Given-When-Then）风格严格描述，所有 Scenario 标注对应源码文件及行号。M66 新增 CDP 连接与控制模块（S011 系列），M67 新增约束矩阵驱动场景（CT 系列），涵盖 IS-018 × syncSettingsAiTab、IS-040 × ensureElement/updateStatus 等跨表约束。
 >
 > 关联文档：[[FLOW_STATE_MACHINE]] · [[TEST_CASES]] · [[ACCEPTANCE_CHECKLIST]]
 
@@ -82,8 +82,10 @@ aliases: [PRD, BDD需求文档, Controller PRD]
 | 63 | [More菜单操作](#m63) | 5 | ControllerLayout.tsx:327-371 |
 | 64 | [设置持久化](#m64) | 4 | 各模块 localStorage |
 | 65 | [工具栏折叠/展开](#m65) | 2 | ControllerLayout.tsx:199-201 |
+| 66 | [CDP 连接与控制](#m66) | 7 | cdp_client.py, IS-040 |
+| 67 | [约束矩阵驱动场景](#m67) | 8 | 多模块跨表约束验证 |
 
-**合计：~211 Scenario**
+**合计：~226 Scenario**
 
 ---
 
@@ -1230,12 +1232,15 @@ Then 调用 exitFullscreen()
 
 **Scenario 26.1:** 打开设置弹窗
 `headerPopups.ts:103-112`
+> 对应 S009.01 — IS-018-OP1 × syncSettingsAiTab 约束
 
 ```gherkin
 Given 设置弹窗当前关闭
 When 用户点击设置按钮
 Then 显示 #settingsPopup（添加 .show 类）
   And 同步 AI 引擎设置状态（syncSettingsAiTab）
+  And 当前 AI 引擎选项高亮
+  And AI 引擎标签页为默认活动标签
   And 关闭其他弹窗（IME 弹窗、脚本面板）
 ```
 
@@ -1266,35 +1271,55 @@ Then 隐藏 #settingsPopup
 
 **Scenario 27.1:** 调整 FPS
 `streamCore.ts:605-634` · `ControllerLayout.tsx:209-250`
+> 对应 S009.06 — IS-019-OP1
 
 ```gherkin
 Given 设置弹窗 → 画质选项卡
-When 用户修改 FPS 值
+When 用户修改 FPS 值（例如 30）
   And 点击应用设置
-Then POST /api/session/settings { fps, quality, resolution, encoding_mode }
+Then POST /api/session/settings { fps: 30, quality, resolution, encoding_mode }
+  And webrtc_bridge.set_fps(30) 被调用
+  And 视频流帧率更新
 ```
 
 **Scenario 27.2:** 调整画质
 `streamCore.ts:605-634`
+> 对应 S009.07 — IS-019-OP2
 
 ```gherkin
 Given 设置弹窗 → 画质选项卡
-When 用户修改画质值并应用
-Then 后端更新编码器参数
-  And 日志记录设置变更
+When 用户修改画质值（例如 80）并应用
+Then POST /api/session/settings { quality: 80 }
+  And webrtc_bridge.set_quality(80) 被调用
+  And 带宽使用量变化
 ```
 
 **Scenario 27.3:** 调整分辨率
 `streamCore.ts:605-634`
+> 对应 S009.08 — IS-019-OP3
 
 ```gherkin
 Given 设置弹窗 → 画质选项卡
-When 用户选择新分辨率并应用
-Then 后端调整视口大小
+When 用户输入新分辨率（例如 1920x1080）并应用
+Then POST /api/session/settings { resolution: "1920x1080" }
+  And webrtc_bridge.set_resolution(1920, 1080) 被调用
   And syncBackendResolution() 同步前端坐标映射
+  And 视频画面比例更新
 ```
 
-**Scenario 27.4:** 传输模式变更触发重连
+**Scenario 27.4:** Scrcpy 模式分辨率变更触发捕获重启
+`streamCore.ts:605-634`
+> 对应 S009.09 — IS-019-OP3 Scrcpy 分支
+
+```gherkin
+Given 当前编码模式为 Scrcpy
+  And 设置弹窗 → 画质选项卡
+When 用户更改分辨率（例如 1280x720）并应用
+Then Scrcpy 捕获引擎自动重启
+  And 视频流以新分辨率恢复
+```
+
+**Scenario 27.5:** 传输模式变更触发重连
 `headerActions.ts:206-212`
 
 ```gherkin
@@ -1313,6 +1338,7 @@ Then 应用画质设置
 
 **Scenario 28.1:** 切换到 Midscene 引擎
 `headerPopups.ts:122-126`
+> 对应 S009.02 — IS-018-OP2 × syncSettingsAiTab 约束
 
 ```gherkin
 Given 设置弹窗 → AI 选项卡
@@ -1321,38 +1347,57 @@ Then localStorage["ai_engine"] = "midscene"
   And 显示 Midscene 模型选择器
   And 隐藏 MAI-UI 模型选择器
   And 显示分离模式切换
+  And syncSettingsAiTab 执行，AI 标签页状态更新为 Midscene 模式
 ```
 
 **Scenario 28.2:** 切换到 MAI-UI 引擎
 `headerPopups.ts:122-126`
+> 对应 S009.03 — IS-018-OP3 × syncSettingsAiTab 约束
 
 ```gherkin
 Given 设置弹窗 → AI 选项卡
 When 用户选择 MAI-UI 引擎
 Then localStorage["ai_engine"] = "mai-ui"
   And 显示 MAI-UI 模型选择器
+  And 显示 MAI-UI base URL 输入字段
   And 隐藏 Midscene 模型选择器
   And 隐藏分离模式切换
+  And syncSettingsAiTab 执行，AI 标签页状态更新为 MAI-UI 模式
 ```
 
-**Scenario 28.3:** 选择 AI 模型
+**Scenario 28.3:** 选择 AI 定位模型
 `headerPopups.ts:128-135`
+> 对应 S009.04 — IS-018-OP4 × syncModelFromSettings × syncSettingsAiTab 约束
 
 ```gherkin
 Given Midscene 引擎已选中
-When 用户从下拉框选择模型
-Then localStorage["ai_model"] = 选择值
-  And 同步更新 AI 面板中的模型选择器
+When 用户从下拉框选择定位模型（例如 gpt-4o）
+Then localStorage["ai_model"] = "gpt-4o"
+  And syncModelFromSettings 执行，AI 面板模型选择器同步更新
+  And syncSettingsAiTab 执行，AI 标签页状态已更新
 ```
 
 **Scenario 28.4:** 选择 MAI-UI 模型
 `headerPopups.ts:145-150`
+> 对应 S009.04 MAI-UI 分支
 
 ```gherkin
 Given MAI-UI 引擎已选中
 When 用户选择 MAI-UI 模型
 Then localStorage["maiui_model"] = 选择值
   And 同步更新设置面板中的选择器
+```
+
+**Scenario 28.5:** 选择 AI 规划模型
+`headerPopups.ts:152-162`
+> 对应 S009.05 — IS-018-OP5 × syncPlanningModelFromSettings 约束
+
+```gherkin
+Given Midscene 引擎已选中
+  And 分屏模式已启用（规划模型选择器可见）
+When 用户从规划模型下拉框选择模型（例如 gpt-4o-mini）
+Then localStorage["ai_planning_model"] = "gpt-4o-mini"
+  And syncPlanningModelFromSettings 执行，AI 面板规划模型选择器同步更新
 ```
 
 ---
@@ -1364,6 +1409,7 @@ Then localStorage["maiui_model"] = 选择值
 
 **Scenario 29.1:** 启用分离模式
 `headerPopups.ts:152-162`
+> 对应 S009.10 — IS-021-OP1，toggleSettingsSplitMode
 
 ```gherkin
 Given Midscene 引擎已选中
@@ -1374,10 +1420,12 @@ Then #settingsSplitToggle 添加 .active
   And 同步 #aiSplitModeToggle checked 状态
   And 调用 aiToggleSplitMode(true)
   And localStorage["ai_split_mode"] = "true"
+  And 页面布局切换为双面板并排
 ```
 
 **Scenario 29.2:** 禁用分离模式
 `headerPopups.ts:152-162`
+> 对应 S009.11 — IS-021-OP1，toggleSettingsSplitMode
 
 ```gherkin
 Given 分离模式当前启用
@@ -1385,6 +1433,8 @@ When 用户点击分离模式切换
 Then 移除 .active
   And 隐藏 Planning Model 选择行
   And aiToggleSplitMode(false)
+  And localStorage["ai_split_mode"] = "false"
+  And 页面布局恢复单面板
 ```
 
 **Scenario 29.3:** 非 Midscene 引擎时不可用
@@ -2890,6 +2940,213 @@ When 用户向下拉动拉绳
 Then 工具栏展开显示
   And 拉绳物理动画播放
   And 视频区域恢复
+```
+
+---
+
+<a id="m66"></a>
+### M66 — CDP 连接与控制
+
+**Feature:** Chrome DevTools Protocol 连接与脚本注入
+> CDP 模块负责建立与无头 Chrome 的调试协议连接，支持脚本注入、截图和 JS 执行。
+
+**Scenario 66.1:** CDP 连接到远程调试端口
+`cdp_client.py:connect()` · `IS-040-OP1`
+> 对应 S011.01 — IS-040-OP1 × ensureElement × updateStatus 约束
+
+```gherkin
+Given Chrome 实例已启动且开启远程调试（端口 9222）
+When 系统调用 cdp_client.connect(port=9222)
+Then CDP 连接建立成功
+  And DOM、Input、Page 等必要域已启用
+  And ensureElement 验证 CDP 面板元素存在（未抛出异常）
+  And updateStatus 以 connected 状态调用
+  And 连接状态指示器更新
+```
+
+**Scenario 66.2:** CDP 自动附加到活动目标
+`cdp_client.py:auto_attach()` · `IS-040-OP1`
+> 对应 S011.02
+
+```gherkin
+Given CDP 连接已建立
+  And Chrome 有至少一个标签页
+When 系统调用 cdp_client.auto_attach()
+Then CDP 附加到活动标签页（attached=true, targetType=page）
+  And 可接收该标签页的 DOM 事件
+  And 无需用户手动选择目标
+```
+
+**Scenario 66.3:** CDP 连接时无目标则创建新标签页
+`cdp_client.py:auto_attach()` · `IS-040-OP1`
+> 对应 S011.03 — edge case
+
+```gherkin
+Given CDP 连接已建立
+  And Chrome 无打开的标签页
+When 系统调用 cdp_client.auto_attach()
+Then 新空白标签页被自动创建
+  And CDP 附加到新创建的标签页
+  And 标签栏显示新标签页条目
+```
+
+**Scenario 66.4:** 注入录制脚本（跨导航持久）
+`cdp_client.py:inject_recorder()` · `IS-040-OP2`
+> 对应 S011.04
+
+```gherkin
+Given CDP 连接可用且已附加到目标
+When 系统调用 cdp_client.inject_recorder()
+Then recorder_websocket.js 脚本注入成功
+  And addScriptToEvaluateOnNewDocument 调用确保跨导航持久
+  And 点击/输入事件在注入后可被捕获
+```
+
+**Scenario 66.5:** 注入元素定位脚本
+`cdp_client.py:inject_element_locator()` · `IS-040-OP3`
+> 对应 S011.05
+
+```gherkin
+Given CDP 连接可用
+When 系统调用 cdp_client.inject_element_locator()
+Then dom_exporter 和 element_locator 脚本注入成功
+  And exportDOMTreeWithXPath 函数在页面上下文中可调用
+  And locateElementByCoordinates 函数在页面上下文中可调用
+```
+
+**Scenario 66.6:** 截图捕获
+`cdp_client.py:take_screenshot_base64()` · `IS-040-OP4`
+> 对应 S011.06
+
+```gherkin
+Given CDP 连接可用，页面已加载
+When API 调用触发 cdp_client.take_screenshot_base64()
+Then 返回有效的 base64 编码字符串
+  And base64 解码后为有效 PNG/JPEG 图片
+  And 图片内容反映当前页面状态
+```
+
+**Scenario 66.7:** 执行任意 JavaScript 并返回结果
+`cdp_client.py:execute_script()` · `IS-040-OP5`
+> 对应 S011.07
+
+```gherkin
+Given CDP 连接可用，页面已加载
+When API 传入 JS 表达式（例如 "document.title"）
+Then JavaScript 在页面上下文中执行
+  And 执行结果被序列化并返回
+  And 执行错误时错误信息被明确报告
+```
+
+---
+
+<a id="m67"></a>
+### M67 — 约束矩阵驱动场景 (Cross-Table Constraint Scenarios)
+
+**Feature:** 跨表约束验证
+> 本模块包含由约束矩阵（operation × validator/side-effect）驱动的场景，验证多个交互面操作与验证器/副作用之间的正确绑定关系。
+
+**Scenario 67.1 [CT-001]:** ensureElement 守卫 — stream panel 不存在时阻断连接
+`streamCore.ts:connect()` · `IS-001-OP1 × ensureElement`
+
+```gherkin
+Given 控制器页面已加载
+  And stream panel 元素已从 DOM 中移除
+When 触发 WebRTC connect()
+Then ensureElement 在 connect() 执行前抛出异常
+  And 连接未建立（connected=false）
+  And 页面显示错误状态
+```
+
+**Scenario 67.2 [CT-002]:** updateStatus 副作用 — 连接状态指示器精确更新
+`streamCore.ts:connect()/disconnect()` · `IS-001-OP1 × updateStatus`
+
+```gherkin
+Given 控制器页面已加载
+When 触发 WebRTC connect() 且连接成功
+Then 状态指示器显示已连接
+  And updateStatus 以 connected 枚举值调用
+
+When 触发断开连接
+Then 状态指示器更新为未连接
+  And updateStatus 以 disconnected 枚举值调用
+```
+
+**Scenario 67.3 [CT-003]:** refreshTabs + renderTabs — 新建标签后标签栏完整重渲染
+`tabs.ts:31-87` · `IS-005-OP2 × refreshTabs × renderTabs`
+
+```gherkin
+Given WebRTC 连接已建立
+  And 标签栏已显示
+When 用户点击新建标签页按钮
+Then refreshTabs 从服务器获取最新标签列表
+  And renderTabs 在 refreshTabs 后更新 DOM
+  And 新标签页出现在标签栏中
+  And 原有标签页保持不变
+  And 活动标签页高亮正确
+```
+
+**Scenario 67.4 [CT-004]:** syncModelFromSettings — 设置选择后模型选择器即时同步
+`headerPopups.ts:setSettingsAiEngine` · `IS-018-OP4 × syncModelFromSettings`
+
+```gherkin
+Given 设置弹窗可打开
+When 用户在设置中选择模型 gpt-4o
+  And 关闭设置弹窗后重新打开
+Then 模型选择器显示 gpt-4o
+  And syncModelFromSettings 读取正确的 localStorage key
+  And 不存在陈旧状态
+```
+
+**Scenario 67.5 [CT-005]:** syncSettingsAiTab — 引擎切换后 AI 标签状态一致性
+`headerPopups.ts:setSettingsAiEngine` · `IS-018-OP2 × syncSettingsAiTab`
+
+```gherkin
+Given 设置弹窗已打开
+  And 当前引擎为 Midscene
+When 用户将 AI 引擎切换到 MAI-UI
+Then syncSettingsAiTab 触发
+  And 引擎选择按钮高亮显示 MAI-UI
+  And 模型列表过滤为 MAI-UI 兼容模型
+  And MAI-UI base URL 输入字段显示
+  And Midscene 特有 UI 隐藏
+```
+
+**Scenario 67.6 [CT-006]:** validateDeleteStep — 最后一个步骤不可删除
+`aiCore.ts:2494-2555` · `validateDeleteStep guard`
+
+```gherkin
+Given 脚本面板已打开
+  And 当前脚本恰好只有一个步骤
+When 用户尝试删除最后一个步骤
+Then validateDeleteStep 返回 false
+  And 删除操作被阻止
+  And 步骤数量仍为 1
+  And 删除按钮呈禁用状态或显示错误反馈
+```
+
+**Scenario 67.7 [CT-007]:** validateDropPosition — 无效拖拽位置被阻止
+`aiCore.ts:2594-2613` · `validateDropPosition guard`
+
+```gherkin
+Given 脚本面板已打开，脚本有多个步骤
+When 用户将步骤拖拽到无效位置（例如拖拽到自身内部）
+Then validateDropPosition 返回 false
+  And 步骤未移动（原始顺序保持）
+  And 提供无效拖放的视觉反馈
+```
+
+**Scenario 67.8 [CT-008]:** syncPlanningModelFromSettings — 规划模型持久化验证
+`headerPopups.ts:152-162` · `IS-018-OP5 × syncPlanningModelFromSettings`
+
+```gherkin
+Given 设置弹窗可打开
+  And 分屏模式已启用（规划模型选择器可见）
+When 用户选择规划模型 claude-3-5-sonnet
+  And 关闭弹窗后重新打开设置
+Then 规划模型选择器显示 claude-3-5-sonnet
+  And syncPlanningModelFromSettings 已持久化到 localStorage
+  And 重新打开设置后 UI 显示正确模型
 ```
 
 ---
