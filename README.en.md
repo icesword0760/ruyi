@@ -26,9 +26,7 @@
   <a href="README.md">中文</a>
 </p>
 
-> **This is a technical-validation demo**, not a production-ready product. Its purpose is to find out whether the streaming pipeline and the AI automation listed below can work together in one complete user flow.
->
-> Run from source. Developed and verified on macOS; Linux and Windows launch scripts are included but not systematically tested. You need an API key for a vision-language model (Qwen3-VL, Doubao, GPT-4o, Claude, Gemini all work) or a local model.
+> **Technical-validation demo**: one complete user flow that exercises the streaming and AI-automation techniques listed below. Run from source. Developed and verified on macOS; Linux and Windows launch scripts are included but not systematically tested. You need an API key for a vision-language model (Qwen3-VL, Doubao, GPT-4o, Claude, Gemini all work) or a local model.
 
 <p align="center">
   <img src="assets/hero.gif" alt="Type a request, the AI plans, locates, clicks, and the step is recorded" width="100%">
@@ -39,9 +37,9 @@
 
 ## What this demo validates
 
-The point of this repository is not product completeness. It exists to find out whether the streaming pipeline below can deliver usable latency and picture quality inside an ordinary browser. Everything else is built around it.
+The streaming pipeline is where most of the effort went. Each stage below lists what it validates and where the code lives.
 
-### Screen streaming and remote control (the core)
+### Screen streaming and remote control
 
 | What is validated | Code |
 |-------------------|------|
@@ -53,7 +51,7 @@ The point of this repository is not product completeness. It exists to find out 
 | **Input return path**: nine mouse, wheel and keyboard event types packed into compact binary frames over the DataChannel or WebSocket; a 10 ms server-side batching window to cut CDP round trips; relative-coordinate mapping and calibration; an IME helper for CJK input | `controller_ui/src/controller/mjpegEventEncoder.ts`, `remoteControlManager.ts`, `headless/event_batch_processor.py` |
 | **Adaptation**: automatic switching between 30, 15, 5 and 1 fps based on how much the picture changes, saving CPU and bandwidth on static screens; frame rate, quality and resolution adjustable live; real-time FPS and bandwidth stats | `headless/adaptive_fps.py`, `controller_ui/src/controller/streamCore.ts` |
 
-### Built around the stream
+### Other technical points
 
 - **Driving headless Chrome over CDP**: navigation, tabs, history, script execution, screenshots and DOM access all go through the DevTools protocol.
 - **Vision-language models as a GUI agent**: Midscene handles planning and locating, and the two can be split across models; Qwen3-VL, Doubao, GPT-4o, Claude, Gemini and a local UI-TARS can be compared in the same UI.

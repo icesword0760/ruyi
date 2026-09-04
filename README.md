@@ -31,9 +31,7 @@
   <a href="README.en.md">English</a>
 </p>
 
-> **这是一个技术验证 Demo**，不是可直接投入生产的产品。它的目的是验证下面列出的投屏链路和 AI 自动化，能否在一条完整的用户流程里协同工作。
->
-> 从源码运行；在 macOS 上开发与验证，Linux 与 Windows 附带启动脚本，尚未系统验证。需要一个视觉语言模型的 API（Qwen3-VL、豆包、GPT-4o、Claude、Gemini 均可），或一个本地模型。
+> **技术验证 Demo**，用一条完整的用户流程把下面这些投屏与 AI 自动化技术串起来跑通。从源码运行；在 macOS 上开发与验证，Linux 与 Windows 附带启动脚本，尚未系统验证。需要一个视觉语言模型的 API（Qwen3-VL、豆包、GPT-4o、Claude、Gemini 均可），或一个本地模型。
 
 <p align="center">
   <img src="assets/hero.gif" alt="输入「点击问答按钮」，AI 规划、定位、点击，页面跳转后步骤被记入脚本" width="100%">
@@ -44,9 +42,9 @@
 
 ## 主要验证的技术
 
-这个仓库的重点不在产品完成度，而在于下面这条投屏链路能不能在普通浏览器里跑出可用的延迟和画质。其余模块都是围绕它搭起来的。
+投屏链路是这里花力气最多的部分。下面按环节列出每一段验证了什么、代码在哪。
 
-### 投屏与远程控制链路（核心）
+### 投屏与远程控制链路
 
 | 验证内容 | 代码 |
 |----------|------|
@@ -58,7 +56,7 @@
 | **输入回传**：鼠标、滚轮、键盘共 9 种事件编码成紧凑的二进制帧，经 DataChannel 或 WebSocket 回传；服务端以 10 ms 窗口批处理，减少 CDP 往返；相对坐标换算与校准；IME 中文输入助手 | `controller_ui/src/controller/mjpegEventEncoder.ts`、`remoteControlManager.ts`、`headless/event_batch_processor.py` |
 | **自适应**：按画面变化在 30、15、5、1 fps 四档之间自动切换，静态画面省 CPU 和带宽；帧率、画质、分辨率可以在线调；FPS 与带宽实时统计 | `headless/adaptive_fps.py`、`controller_ui/src/controller/streamCore.ts` |
 
-### 围绕投屏搭起来的其它验证
+### 其它技术点
 
 - **CDP 驱动无头 Chrome**：导航、标签页、前进后退、脚本执行、截图、DOM 读取，全部走 DevTools 协议。
 - **视觉语言模型做 GUI Agent**：Midscene 负责规划和定位，规划与定位可以交给不同模型；Qwen3-VL、豆包、GPT-4o、Claude、Gemini 和本地 UI-TARS 在同一界面上切换对比。
