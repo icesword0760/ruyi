@@ -43,15 +43,15 @@ The point of this repository is not product completeness. It exists to find out 
 
 ### Screen streaming and remote control (the core)
 
-| Stage | What is validated | Code |
-|-------|-------------------|------|
-| Capture | Push-mode frames through CDP `Page.startScreencast`, with `captureScreenshot` polling as the fallback | `headless/cdp_client.py` |
-| Encoding | Three routes compared: raw JPEG passthrough for MJPEG, no re-encoding, quality equal to the screenshot; a patched aiortc VP8 encoder tuned for text and UI content; hardware H.264 via VideoToolbox, NVENC, QSV or VAAPI, with libx264 as the fallback | `headless/mjpeg_server.py`, `headless/encoder_patch.py`, `headless/h264_encoder.py` |
-| Low-latency mode | A scrcpy-style path: push capture, lossless PNG input, ultrafast and zerolatency, no B-frames, fixed GOP, and a custom binary frame protocol (video, SPS/PPS, control and stats messages with PTS) | `headless/scrcpy_capture.py`, `headless/scrcpy_encoder.py`, `headless/h264_stream_protocol.py` |
-| Transport | WebRTC (aiortc, SDP negotiation plus a DataChannel) and WebSocket, dispatched by one stream server according to the active mode; TURN setup script included | `headless/webrtc_bridge.py`, `headless/stream_server.py`, `setup_turn_china.sh` |
-| Decoding | Chosen by browser capability: `<img>` per frame for MJPEG, MSE feeding H.264 into `<video>`, WebCodecs decoding onto `<canvas>`; players can be hot-swapped | `controller_ui/src/controller/streamPlayerManager.ts`, `h264MsePlayer.ts`, `h264WebCodecsPlayer.ts` |
-| Input return path | Nine mouse, wheel and keyboard event types packed into compact binary frames over the DataChannel or WebSocket; a 10 ms server-side batching window to cut CDP round trips; relative-coordinate mapping and calibration; an IME helper for CJK input | `controller_ui/src/controller/mjpegEventEncoder.ts`, `remoteControlManager.ts`, `headless/event_batch_processor.py` |
-| Adaptation | Automatic switching between 30, 15, 5 and 1 fps based on how much the picture changes, saving CPU and bandwidth on static screens; frame rate, quality and resolution adjustable live; real-time FPS and bandwidth stats | `headless/adaptive_fps.py`, `controller_ui/src/controller/streamCore.ts` |
+| What is validated | Code |
+|-------------------|------|
+| **Capture**: push-mode frames through CDP `Page.startScreencast`, with `captureScreenshot` polling as the fallback | `headless/cdp_client.py` |
+| **Encoding**: three routes compared. Raw JPEG passthrough for MJPEG, no re-encoding, quality equal to the screenshot; a patched aiortc VP8 encoder tuned for text and UI content; hardware H.264 via VideoToolbox, NVENC, QSV or VAAPI, with libx264 as the fallback | `headless/mjpeg_server.py`, `headless/encoder_patch.py`, `headless/h264_encoder.py` |
+| **Low-latency mode**: a scrcpy-style path. Push capture, lossless PNG input, ultrafast and zerolatency, no B-frames, fixed GOP, and a custom binary frame protocol (video, SPS/PPS, control and stats messages with PTS) | `headless/scrcpy_capture.py`, `headless/scrcpy_encoder.py`, `headless/h264_stream_protocol.py` |
+| **Transport**: WebRTC (aiortc, SDP negotiation plus a DataChannel) and WebSocket, dispatched by one stream server according to the active mode; TURN setup script included | `headless/webrtc_bridge.py`, `headless/stream_server.py`, `setup_turn_china.sh` |
+| **Decoding**: chosen by browser capability. `<img>` per frame for MJPEG, MSE feeding H.264 into `<video>`, WebCodecs decoding onto `<canvas>`; players can be hot-swapped | `controller_ui/src/controller/streamPlayerManager.ts`, `h264MsePlayer.ts`, `h264WebCodecsPlayer.ts` |
+| **Input return path**: nine mouse, wheel and keyboard event types packed into compact binary frames over the DataChannel or WebSocket; a 10 ms server-side batching window to cut CDP round trips; relative-coordinate mapping and calibration; an IME helper for CJK input | `controller_ui/src/controller/mjpegEventEncoder.ts`, `remoteControlManager.ts`, `headless/event_batch_processor.py` |
+| **Adaptation**: automatic switching between 30, 15, 5 and 1 fps based on how much the picture changes, saving CPU and bandwidth on static screens; frame rate, quality and resolution adjustable live; real-time FPS and bandwidth stats | `headless/adaptive_fps.py`, `controller_ui/src/controller/streamCore.ts` |
 
 ### Built around the stream
 

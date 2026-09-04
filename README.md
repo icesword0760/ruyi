@@ -48,15 +48,15 @@
 
 ### 投屏与远程控制链路（核心）
 
-| 环节 | 验证内容 | 代码 |
-|------|----------|------|
-| 采集 | 通过 CDP `Page.startScreencast` 推送式取帧，`captureScreenshot` 轮询作兜底 | `headless/cdp_client.py` |
-| 编码 | 三条路线对比：MJPEG 原始 JPEG 直传，不二次编码，画质与截图一致；给 aiortc 的 VP8 编码器打补丁，按文字和界面内容调码率与量化范围；H.264 硬件编码，VideoToolbox、NVENC、QSV、VAAPI 择优，libx264 兜底 | `headless/mjpeg_server.py`、`headless/encoder_patch.py`、`headless/h264_encoder.py` |
-| 低延迟模式 | 仿 scrcpy 的一套做法：推送式截屏、PNG 无损输入、ultrafast 与 zerolatency、禁用 B 帧、固定 GOP，配一个自定义二进制帧协议（视频帧、SPS/PPS、控制、统计四种消息，带 PTS） | `headless/scrcpy_capture.py`、`headless/scrcpy_encoder.py`、`headless/h264_stream_protocol.py` |
-| 传输 | WebRTC（aiortc，SDP 协商加 DataChannel）与 WebSocket 两条通道，统一流服务器按模式分发；附 TURN 部署脚本 | `headless/webrtc_bridge.py`、`headless/stream_server.py`、`setup_turn_china.sh` |
-| 解码 | 浏览器侧按能力自动选择：`<img>` 逐帧渲染 MJPEG，MSE 把 H.264 注入 `<video>`，WebCodecs 解码后画到 `<canvas>`；播放器可以热切换 | `controller_ui/src/controller/streamPlayerManager.ts`、`h264MsePlayer.ts`、`h264WebCodecsPlayer.ts` |
-| 输入回传 | 鼠标、滚轮、键盘共 9 种事件编码成紧凑的二进制帧，经 DataChannel 或 WebSocket 回传；服务端以 10 ms 窗口批处理，减少 CDP 往返；相对坐标换算与校准；IME 中文输入助手 | `controller_ui/src/controller/mjpegEventEncoder.ts`、`remoteControlManager.ts`、`headless/event_batch_processor.py` |
-| 自适应 | 按画面变化在 30、15、5、1 fps 四档之间自动切换，静态画面省 CPU 和带宽；帧率、画质、分辨率可以在线调；FPS 与带宽实时统计 | `headless/adaptive_fps.py`、`controller_ui/src/controller/streamCore.ts` |
+| 验证内容 | 代码 |
+|----------|------|
+| **采集**：通过 CDP `Page.startScreencast` 推送式取帧，`captureScreenshot` 轮询作兜底 | `headless/cdp_client.py` |
+| **编码**：三条路线对比。MJPEG 原始 JPEG 直传，不二次编码，画质与截图一致；给 aiortc 的 VP8 编码器打补丁，按文字和界面内容调码率与量化范围；H.264 硬件编码，VideoToolbox、NVENC、QSV、VAAPI 择优，libx264 兜底 | `headless/mjpeg_server.py`、`headless/encoder_patch.py`、`headless/h264_encoder.py` |
+| **低延迟模式**：仿 scrcpy 的一套做法。推送式截屏、PNG 无损输入、ultrafast 与 zerolatency、禁用 B 帧、固定 GOP，配一个自定义二进制帧协议（视频帧、SPS/PPS、控制、统计四种消息，带 PTS） | `headless/scrcpy_capture.py`、`headless/scrcpy_encoder.py`、`headless/h264_stream_protocol.py` |
+| **传输**：WebRTC（aiortc，SDP 协商加 DataChannel）与 WebSocket 两条通道，统一流服务器按模式分发；附 TURN 部署脚本 | `headless/webrtc_bridge.py`、`headless/stream_server.py`、`setup_turn_china.sh` |
+| **解码**：浏览器侧按能力自动选择。`<img>` 逐帧渲染 MJPEG，MSE 把 H.264 注入 `<video>`，WebCodecs 解码后画到 `<canvas>`；播放器可以热切换 | `controller_ui/src/controller/streamPlayerManager.ts`、`h264MsePlayer.ts`、`h264WebCodecsPlayer.ts` |
+| **输入回传**：鼠标、滚轮、键盘共 9 种事件编码成紧凑的二进制帧，经 DataChannel 或 WebSocket 回传；服务端以 10 ms 窗口批处理，减少 CDP 往返；相对坐标换算与校准；IME 中文输入助手 | `controller_ui/src/controller/mjpegEventEncoder.ts`、`remoteControlManager.ts`、`headless/event_batch_processor.py` |
+| **自适应**：按画面变化在 30、15、5、1 fps 四档之间自动切换，静态画面省 CPU 和带宽；帧率、画质、分辨率可以在线调；FPS 与带宽实时统计 | `headless/adaptive_fps.py`、`controller_ui/src/controller/streamCore.ts` |
 
 ### 围绕投屏搭起来的其它验证
 
