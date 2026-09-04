@@ -50,3 +50,13 @@ ai_service/midscene_run/
 
 # Nested clone of web-infra-dev/midscene (not a submodule)
 /midscene/
+
+# spec pipeline artifacts (kept local only)
+/canonical/
+/evidence/
+controller_ui/canonical/
+controller_ui/docs/
+controller_ui/evidence/
+controller_ui/review/
+controller_ui/.claude/
+.spec-pipeline-status.yaml
