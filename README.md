@@ -18,10 +18,11 @@
   <img src="https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/node-18%2B-339933?logo=node.js&logoColor=white" alt="Node 18+">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" alt="macOS | Linux">
-  <img src="https://img.shields.io/badge/status-早期预览-orange" alt="早期预览">
+  <img src="https://img.shields.io/badge/status-技术验证%20Demo-orange" alt="技术验证 Demo">
 </p>
 
 <p align="center">
+  <a href="#主要验证的技术">验证了什么</a> ·
   <a href="#快速开始">快速开始</a> ·
   <a href="#它能做什么">它能做什么</a> ·
   <a href="#适合谁">适合谁</a> ·
@@ -30,7 +31,9 @@
   <a href="README.en.md">English</a>
 </p>
 
-> **状态**：早期预览，从源码运行。在 macOS 上开发与验证；Linux 与 Windows 附带启动脚本，尚未系统验证。需要一个视觉语言模型的 API（Qwen3-VL、豆包、GPT-4o、Claude、Gemini 均可），或一个本地模型。
+> **这是一个技术验证 Demo**，不是可直接投入生产的产品。它的目的是验证下面列出的投屏链路和 AI 自动化，能否在一条完整的用户流程里协同工作。
+>
+> 从源码运行；在 macOS 上开发与验证，Linux 与 Windows 附带启动脚本，尚未系统验证。需要一个视觉语言模型的 API（Qwen3-VL、豆包、GPT-4o、Claude、Gemini 均可），或一个本地模型。
 
 <p align="center">
   <img src="assets/hero.gif" alt="输入「点击问答按钮」，AI 规划、定位、点击，页面跳转后步骤被记入脚本" width="100%">
@@ -38,6 +41,30 @@
 <p align="center">
   <sub>输入「点击问答按钮」：AI 先规划，再在页面里定位到导航栏的「问答」并点击；页面跳转后，这一步被记入右侧脚本。画面来自本地演示环境，目标站点为 testerhome.com。</sub>
 </p>
+
+## 主要验证的技术
+
+这个仓库的重点不在产品完成度，而在于下面这条投屏链路能不能在普通浏览器里跑出可用的延迟和画质。其余模块都是围绕它搭起来的。
+
+### 投屏与远程控制链路（核心）
+
+| 环节 | 验证内容 | 代码 |
+|------|----------|------|
+| 采集 | 通过 CDP `Page.startScreencast` 推送式取帧，`captureScreenshot` 轮询作兜底 | `headless/cdp_client.py` |
+| 编码 | 三条路线对比：MJPEG 原始 JPEG 直传，不二次编码，画质与截图一致；给 aiortc 的 VP8 编码器打补丁，按文字和界面内容调码率与量化范围；H.264 硬件编码，VideoToolbox、NVENC、QSV、VAAPI 择优，libx264 兜底 | `headless/mjpeg_server.py`、`headless/encoder_patch.py`、`headless/h264_encoder.py` |
+| 低延迟模式 | 仿 scrcpy 的一套做法：推送式截屏、PNG 无损输入、ultrafast 与 zerolatency、禁用 B 帧、固定 GOP，配一个自定义二进制帧协议（视频帧、SPS/PPS、控制、统计四种消息，带 PTS） | `headless/scrcpy_capture.py`、`headless/scrcpy_encoder.py`、`headless/h264_stream_protocol.py` |
+| 传输 | WebRTC（aiortc，SDP 协商加 DataChannel）与 WebSocket 两条通道，统一流服务器按模式分发；附 TURN 部署脚本 | `headless/webrtc_bridge.py`、`headless/stream_server.py`、`setup_turn_china.sh` |
+| 解码 | 浏览器侧按能力自动选择：`<img>` 逐帧渲染 MJPEG，MSE 把 H.264 注入 `<video>`，WebCodecs 解码后画到 `<canvas>`；播放器可以热切换 | `controller_ui/src/controller/streamPlayerManager.ts`、`h264MsePlayer.ts`、`h264WebCodecsPlayer.ts` |
+| 输入回传 | 鼠标、滚轮、键盘共 9 种事件编码成紧凑的二进制帧，经 DataChannel 或 WebSocket 回传；服务端以 10 ms 窗口批处理，减少 CDP 往返；相对坐标换算与校准；IME 中文输入助手 | `controller_ui/src/controller/mjpegEventEncoder.ts`、`remoteControlManager.ts`、`headless/event_batch_processor.py` |
+| 自适应 | 按画面变化在 30、15、5、1 fps 四档之间自动切换，静态画面省 CPU 和带宽；帧率、画质、分辨率可以在线调；FPS 与带宽实时统计 | `headless/adaptive_fps.py`、`controller_ui/src/controller/streamCore.ts` |
+
+### 围绕投屏搭起来的其它验证
+
+- **CDP 驱动无头 Chrome**：导航、标签页、前进后退、脚本执行、截图、DOM 读取，全部走 DevTools 协议。
+- **视觉语言模型做 GUI Agent**：Midscene 负责规划和定位，规划与定位可以交给不同模型；Qwen3-VL、豆包、GPT-4o、Claude、Gemini 和本地 UI-TARS 在同一界面上切换对比。
+- **操作录制到脚本**：注入页面的录制脚本捕获事件，为每个目标生成 ARIA、testid、ID、文本、CSS、XPath 六种选择器并打稳定性分，连续输入与重复点击自动合并。
+- **自愈定位与回放**：XPath、CSS、文本（DOM 或 OCR）、图像模板（Airtest）、归一化坐标、AI 定位、原始坐标，按优先级逐级降级；导出 pytest 加 allure，在 Playwright 里回放。
+- **OCR 与图像匹配微服务**：RapidOCR 文字定位和 Airtest 模板匹配作为独立服务接入。
 
 ## 你是否也在这样工作
 
@@ -162,7 +189,7 @@ Windows 用户可以使用 `start.bat`，但尚未系统验证。
 - 安装包或 Docker 镜像。目前只能从源码运行。
 - Linux 与 Windows 的系统性验证。现有脚本能启动，但没有完整跑过测试。
 - 自动化测试套件。早期用例已归档，当前仓库没有活跃的测试。
-- Android 设备投屏。仓库里有基于 scrcpy 的采集与编码模块，控制端尚未接入。
+- macOS 之外的硬件 H.264 编码器。NVENC、QSV、VAAPI 的分支都在代码里，但没有在对应机器上验证过。
 - pytest 之外的导出格式。
 
 ## 开发者指南

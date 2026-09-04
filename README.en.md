@@ -14,10 +14,11 @@
   <img src="https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/node-18%2B-339933?logo=node.js&logoColor=white" alt="Node 18+">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" alt="macOS | Linux">
-  <img src="https://img.shields.io/badge/status-early%20preview-orange" alt="early preview">
+  <img src="https://img.shields.io/badge/status-tech%20validation%20demo-orange" alt="tech validation demo">
 </p>
 
 <p align="center">
+  <a href="#what-this-demo-validates">What it validates</a> ·
   <a href="#quick-start">Quick start</a> ·
   <a href="#what-it-does">What it does</a> ·
   <a href="#who-its-for">Who it's for</a> ·
@@ -25,7 +26,9 @@
   <a href="README.md">中文</a>
 </p>
 
-> **Status**: early preview, run from source. Developed and verified on macOS; Linux and Windows launch scripts are included but not systematically tested. You need an API key for a vision-language model (Qwen3-VL, Doubao, GPT-4o, Claude, Gemini all work) or a local model.
+> **This is a technical-validation demo**, not a production-ready product. Its purpose is to find out whether the streaming pipeline and the AI automation listed below can work together in one complete user flow.
+>
+> Run from source. Developed and verified on macOS; Linux and Windows launch scripts are included but not systematically tested. You need an API key for a vision-language model (Qwen3-VL, Doubao, GPT-4o, Claude, Gemini all work) or a local model.
 
 <p align="center">
   <img src="assets/hero.gif" alt="Type a request, the AI plans, locates, clicks, and the step is recorded" width="100%">
@@ -33,6 +36,30 @@
 <p align="center">
   <sub>Typing "click the Q&amp;A button": the AI plans first, then locates the Q&amp;A entry in the navigation bar and clicks it. After the page changes, the step is written into the script on the right. Recorded in a local demo against testerhome.com.</sub>
 </p>
+
+## What this demo validates
+
+The point of this repository is not product completeness. It exists to find out whether the streaming pipeline below can deliver usable latency and picture quality inside an ordinary browser. Everything else is built around it.
+
+### Screen streaming and remote control (the core)
+
+| Stage | What is validated | Code |
+|-------|-------------------|------|
+| Capture | Push-mode frames through CDP `Page.startScreencast`, with `captureScreenshot` polling as the fallback | `headless/cdp_client.py` |
+| Encoding | Three routes compared: raw JPEG passthrough for MJPEG, no re-encoding, quality equal to the screenshot; a patched aiortc VP8 encoder tuned for text and UI content; hardware H.264 via VideoToolbox, NVENC, QSV or VAAPI, with libx264 as the fallback | `headless/mjpeg_server.py`, `headless/encoder_patch.py`, `headless/h264_encoder.py` |
+| Low-latency mode | A scrcpy-style path: push capture, lossless PNG input, ultrafast and zerolatency, no B-frames, fixed GOP, and a custom binary frame protocol (video, SPS/PPS, control and stats messages with PTS) | `headless/scrcpy_capture.py`, `headless/scrcpy_encoder.py`, `headless/h264_stream_protocol.py` |
+| Transport | WebRTC (aiortc, SDP negotiation plus a DataChannel) and WebSocket, dispatched by one stream server according to the active mode; TURN setup script included | `headless/webrtc_bridge.py`, `headless/stream_server.py`, `setup_turn_china.sh` |
+| Decoding | Chosen by browser capability: `<img>` per frame for MJPEG, MSE feeding H.264 into `<video>`, WebCodecs decoding onto `<canvas>`; players can be hot-swapped | `controller_ui/src/controller/streamPlayerManager.ts`, `h264MsePlayer.ts`, `h264WebCodecsPlayer.ts` |
+| Input return path | Nine mouse, wheel and keyboard event types packed into compact binary frames over the DataChannel or WebSocket; a 10 ms server-side batching window to cut CDP round trips; relative-coordinate mapping and calibration; an IME helper for CJK input | `controller_ui/src/controller/mjpegEventEncoder.ts`, `remoteControlManager.ts`, `headless/event_batch_processor.py` |
+| Adaptation | Automatic switching between 30, 15, 5 and 1 fps based on how much the picture changes, saving CPU and bandwidth on static screens; frame rate, quality and resolution adjustable live; real-time FPS and bandwidth stats | `headless/adaptive_fps.py`, `controller_ui/src/controller/streamCore.ts` |
+
+### Built around the stream
+
+- **Driving headless Chrome over CDP**: navigation, tabs, history, script execution, screenshots and DOM access all go through the DevTools protocol.
+- **Vision-language models as a GUI agent**: Midscene handles planning and locating, and the two can be split across models; Qwen3-VL, Doubao, GPT-4o, Claude, Gemini and a local UI-TARS can be compared in the same UI.
+- **Recording actions into scripts**: an injected recorder captures events, generates ARIA, testid, ID, text, CSS and XPath selectors with a stability score for each target, and merges consecutive input and duplicate clicks.
+- **Self-healing locating and replay**: XPath, CSS, text (DOM or OCR), image template (Airtest), normalized coordinates, AI locating and raw coordinates, degrading in priority order; exported as pytest plus allure and replayed through Playwright.
+- **OCR and image-matching microservices**: RapidOCR text locating and Airtest template matching run as separate services.
 
 ## Sound familiar?
 
@@ -157,7 +184,7 @@ None of this exists yet:
 - Installers or a Docker image. Source only for now.
 - Systematic Linux and Windows verification.
 - An automated test suite. Early tests were archived; the repo has no active tests.
-- Android device streaming. scrcpy-based capture and encoding modules exist but are not wired into the console.
+- Hardware H.264 encoders beyond macOS. The NVENC, QSV and VAAPI branches are in the code but have not been verified on matching machines.
 - Export formats beyond pytest.
 
 ## Developer notes
