@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="AGPL-3.0 License"></a>
   <img src="https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/node-18%2B-339933?logo=node.js&logoColor=white" alt="Node 18+">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" alt="macOS | Linux">
@@ -243,4 +243,4 @@ pip install -e .                                   # 以开发模式安装 webrt
 
 遇到问题或有想法，欢迎在 [Issues](https://github.com/icesword0760/ruyi/issues) 里说。
 
-本项目以 [MIT 协议](LICENSE) 开源。如果它帮你省下了找选择器的时间，点个 Star 让更多人看到。
+本项目以 [AGPL-3.0](LICENSE) 协议开源：可以自由使用、修改和分发，但基于它修改后的版本，无论是分发还是作为网络服务提供，都需要以同样的协议公开源码。如果它帮你省下了找选择器的时间，点个 Star 让更多人看到。

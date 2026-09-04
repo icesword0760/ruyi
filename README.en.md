@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-AGPL--3.0-blue.svg" alt="AGPL-3.0 License"></a>
   <img src="https://img.shields.io/badge/python-3.9%2B-3776AB?logo=python&logoColor=white" alt="Python 3.9+">
   <img src="https://img.shields.io/badge/node-18%2B-339933?logo=node.js&logoColor=white" alt="Node 18+">
   <img src="https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey" alt="macOS | Linux">
@@ -224,4 +224,4 @@ your browser ──WebRTC / MJPEG──▶ Flask (5566) + stream (5567) ──CD
 
 Questions and ideas are welcome in [Issues](https://github.com/icesword0760/ruyi/issues).
 
-MIT licensed. If it saved you an afternoon of selector hunting, a star helps others find it.
+Licensed under [AGPL-3.0](LICENSE): use, modify and redistribute freely, but modified versions must be released under the same license, whether you distribute them or run them as a network service. If it saved you an afternoon of selector hunting, a star helps others find it.
