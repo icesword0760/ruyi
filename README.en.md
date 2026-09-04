@@ -6,7 +6,8 @@
 
 <p align="center">
   <b>An AI browser-automation workbench</b><br>
-  Talk to a live, remotely streamed Chrome. It plans, locates, acts, and turns every action into a self-healing script.
+  Stream a Chrome that runs on a remote machine into your own browser and drive it with your mouse and keyboard.<br>
+  Then tell it what to do: the AI plans, locates, acts, and turns every action into a self-healing script.
 </p>
 
 <p align="center">
@@ -32,8 +33,19 @@
   <img src="assets/hero.gif" alt="Type a request, the AI plans, locates, clicks, and the step is recorded" width="100%">
 </p>
 <p align="center">
-  <sub>Typing "click the Q&amp;A button": the AI plans first, then locates the Q&amp;A entry in the navigation bar and clicks it. After the page changes, the step is written into the script on the right. Recorded in a local demo against testerhome.com.</sub>
+  <sub>On the left is the remote Chrome, streamed live. Typing "click the Q&amp;A button": the AI plans first, then locates the Q&amp;A entry in the navigation bar and clicks it. After the page changes, the step is written into the script on the right. Recorded in a local demo against testerhome.com.</sub>
 </p>
+
+## The browser it controls is remote
+
+This is the main difference between Ruyi and most "AI drives the browser" tools: the Chrome being driven does not have to be on your machine.
+
+- **Chrome runs remotely.** A server, a machine inside your network, or a headless instance on your own box. It is taken over through CDP and its screen is pushed to your browser over WebRTC or MJPEG in real time.
+- **You drive it locally.** Mouse, wheel, keyboard and CJK input travel back from your browser to the remote side, so it feels like a local browser. Frame rate, quality and resolution are adjustable live, and a TURN setup script is included for cross-network use.
+- **AI and humans share one browser.** You watch every click the AI makes as it happens; when it gets stuck, you take over directly, without stopping the service or logging into the remote machine for a screenshot.
+- **One pipeline, many uses.** Cloud browser, remote debugging, a visible window into headless environments, several clients watching the same screen.
+
+The AI chat, recording and self-healing scripts below are all built on top of this remote browser.
 
 ## What this demo validates
 
@@ -61,18 +73,19 @@ The streaming pipeline is where most of the effort went. Each stage below lists 
 
 ## Sound familiar?
 
+- Your automation runs on a headless Chrome on a server. You cannot see what it is doing, and one manual click means logging in and taking screenshots.
 - Half of writing UI automation is hunting for selectors. One redesign later, every XPath is red.
 - Recorders produce scripts that know exactly one way to find an element. When replay fails, you re-record.
 - You would let an AI drive the browser, but it runs where you cannot see it. Wrong click? Which element? Why? No way to tell.
 - Some teammates want a visible browser they can take over by hand. Others want pytest that runs in CI.
 
-Ruyi puts all four on one page: a Chrome streamed into your browser over WebRTC or MJPEG, an AI that plans and acts, a script where every step carries six locators, and a one-click pytest export.
+Ruyi puts all of this on one page: a remote Chrome streamed into your browser that you can drive directly, an AI that plans and acts, a script where every step carries six locators, and a one-click pytest export.
 
 ## What it does
 
 ### 1. A remote browser you can see and take over
 
-The remote Chrome shows up live in your browser. Drive it with your own mouse and keyboard, change the URL, open tabs, go back and forward, and take control from the AI at any moment. Switch between MJPEG and WebRTC H.264, and tune frame rate, quality and resolution.
+The remote Chrome shows up live in your browser. Drive it with your own mouse and keyboard, change the URL, open tabs, go back and forward, and take control from the AI at any moment. The remote side can be a server, a machine inside your network, or a headless instance on your own box. Switch between MJPEG and WebRTC H.264, and tune frame rate, quality and resolution.
 
 <p align="center"><img src="assets/live-browser.png" alt="Remote browser address bar, tabs and connection stats" width="800"></p>
 <p align="center"><sub>The remote Chrome's address bar and tabs on top; the popover shows the current transport, FPS and bandwidth.</sub></p>
@@ -141,6 +154,7 @@ The side panel resizes, collapses, and pops out into its own small window, so th
 
 ## Who it's for
 
+- **Anyone who needs to drive a browser remotely**: Chrome runs on a server or an internal machine, and you want to see and operate it from your own browser.
 - **Test engineers maintaining UI automation** whose locators break on every release.
 - **People doing web RPA or data collection** who need a browser they can watch and take over, not a black box.
 - **GUI-agent researchers** who want to compare vision models on the same page with the same instruction.
